@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClubController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TelefonoController;
@@ -21,7 +22,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth.login');});
+    if(auth()->user()){
+        return redirect('dashboard');
+    }else{
+        return view('auth.login');
+    }
+});
 
 Route::middleware([
     'auth:sanctum',
@@ -33,7 +39,7 @@ Route::middleware([
 Route::get('/dashboard',[HomeController::class,'dashboard'])->name('dashboard');
 });
 
-Route::get('productores', [HomeController::class,'index'])->middleware('auth')->name('productors.index');
+Route::get('usuarios', [HomeController::class,'index'])->middleware('auth')->name('productors.index');
 
 Route::get('recepcion', [HomeController::class,'production'])->middleware('auth')->name('production.index');
 
@@ -52,3 +58,5 @@ Route::resource('telefono', TelefonoController::class)->names('telefonos');
 Route::resource('role', RoleController::class)->names('admin.roles');
 
 Route::resource('users', UserController::class)->only(['index','edit','update','destroy'])->names('users');
+
+Route::get('registro/usuarios', [ClubController::class,'create'])->name('registro.usuarios');

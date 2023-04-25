@@ -15,11 +15,12 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Inicio') }}
                     </x-jet-nav-link>
-                    @can('Ver productores')
+                    @can('Ver usuarios registrados')
                         <x-jet-nav-link href="{{ route('productors.index') }}" :active="request()->routeIs('productors.index')">
-                            {{ __('Productores') }}
+                            {{ __('Apoderados') }}
                         </x-jet-nav-link>
                     @endcan
+                    
                     @can('Ver produccion_total')
                         <x-jet-nav-link href="{{ route('production.index') }}" :active="request()->routeIs('production.index')">
                             {{ __('Recepciones') }}

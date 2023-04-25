@@ -4,7 +4,7 @@
             <!--- more free and premium Tailwind CSS components at https://tailwinduikit.com/ --->
 
             <div class="px-6 py-4">
-                <input wire:keydown="limpiar_page" wire:model="search"  class="form-input flex-1 w-full shadow-sm  border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg focus:outline-none" placeholder="Ingrese el nombre, rut o csg del productor" autocomplete="off">
+                <input wire:keydown="limpiar_page" wire:model="search"  class="form-input flex-1 w-full shadow-sm  border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg focus:outline-none" placeholder="Ingrese el nombre o email del usuario" autocomplete="off">
             </div>
     
       
@@ -18,7 +18,7 @@
                        <div class="flex items-center justify-center">
                           <div class="flex-shrink-0 text-center">
                              <span class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">{{number_format($allusers->count())}}</span>
-                             <h3 class="text-base font-normal text-gray-500">Productores</h3>
+                             <h3 class="text-base font-normal text-gray-500">Usuarios</h3>
                           </div>
                          
                        </div>
@@ -53,11 +53,8 @@
         
                             <thead class="bg-gray-50">
                                 <th>ID</th>
-                                <th>Empresa</th>
-                                <th>RUT Empresa</th>
-                                <th class="text-center">CSG</th>
-                                <th class="text-center">Usurio</th>
-                                <th class="text-center">Pass</th>
+                                <th>Nombre</th>
+                                <th class="text-center">Reset Password</th>
                                 <th>CELULAR</th>
                                 <th>EMAIL</th>
                                 <th>ULTIMA MODIFICACIÓN</th>
@@ -88,8 +85,8 @@
 
                                             
 
-                                                @if ($user->idprod)
-                                                    {{$user->idprod}}
+                                                @if ($user->id)
+                                                    {{$user->id}}
                                                     
                                                 @endif
                                             
@@ -112,43 +109,7 @@
                                             
                                             </div>
                                         </td>
-                                        <td class="pl-5">
-                                            <div class="whitespace-nowrap flex items-center text-center">
-                                                
-                                                <p class="whitespace-nowrap text-sm leading-none text-gray-600 ml-2">
-                                            
-                                                    @if ($user->rut)
-                                                        {{$user->rut}}
-                                                        
-                                                    @endif
-                                                </p>
-                                            </div>
-                                        </td>
-                                        <td class="pl-5 text-center">
-                                            <p class="text-base text-center font-medium leading-none text-gray-700 mr-2">
-
-                                        
-                                            @if ($user->csg)
-                                                    {{$user->csg}}
-                                                    
-                                                @endif
-                                            
-                                            </p>
-                                        
-                                        </td>
-                                            <td class="pl-5 whitespace-nowrap">
-                                                <p class="whitespace-nowrap  text-base flex font-medium leading-none text-gray-700 mr-2">
-
-                                                
-
-                                                @if ($user->user)
-                                                    {{$user->user}}
-                                                @endif
-                                                
-                                            </p>
-                                            
-                                        </td>
-                                        
+                                       
                                         <td class="pl-5">
                                         
 
@@ -226,7 +187,7 @@
                                         </td>
                                     
                                         <td class="pl-5">
-                                            <button class="py-3 px-3 text-sm focus:outline-none leading-none text-red-700 bg-red-100 rounded">Usuario ya creado</button>
+                                            <button class="py-3 px-3 text-sm focus:outline-none leading-none text-red-700 bg-red-100 rounded">Inactivo</button>
                                         </td>
                                                     {{-- commen
                                         <td class="pl-4">
@@ -256,33 +217,7 @@
                                 @if ($cellid==$user->id)
 
                                     <tr tabindex="0" class="focus:outline-none h-16 border border-gray-100 rounded">
-                                        <td class="text-center">
-                                            <p class="text-base font-medium leading-none text-gray-700 mr-2">
-
-                                            
-                                                
-                                                
-                                            </p>
-                                        
-                                        </td>
-                                        <td class="">
-                                            <div class="flex items-center pl-5">
-                                                <p class="text-base font-medium leading-none text-gray-700 mr-2">
-
-                                                
-                                                    
-                                                </p>
-                                            
-                                            </div>
-                                        </td>
-                                        <td class="pl-5">
-                                            <div class="whitespace-nowrap flex items-center text-center">
-                                                
-                                                <p class="whitespace-nowrap text-sm leading-none text-gray-600 ml-2">
-                                                    
-                                                </p>
-                                            </div>
-                                        </td>
+                                      
                                         <td class="pl-5">
                                             <p class="text-base font-medium leading-none text-gray-700 mr-2">
 
