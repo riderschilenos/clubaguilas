@@ -126,7 +126,7 @@
                        </div>
                         <ul class="flex-1 space-y-4">
                             <li class="text-gray-500 dark:text-gray-400">
-                                Up to 5 projects
+                                No incluye matricula
                             </li>
                             <li class="text-gray-500 dark:text-gray-400">
                                 Up to 10 collaborators
@@ -159,7 +159,7 @@
                         </div>
                         <ul class="flex-1 space-y-4">
                             <li class="text-gray-500 dark:text-gray-400">
-                                Up to 10 projects
+                              No incluye matricula
                             </li>
                             <li class="text-gray-500 dark:text-gray-400">
                                 Up to 20 collaborators
@@ -194,7 +194,7 @@
                         </div>
                         <ul class="flex-1 space-y-4">
                             <li class="text-gray-500 dark:text-gray-400">
-                                Unlimited projects
+                              Incluye matricula
                             </li>
                             <li class="text-gray-500 dark:text-gray-400">
                                 Unlimited collaborators
@@ -229,7 +229,7 @@
                      </div>
                      <ul class="flex-1 space-y-4">
                          <li class="text-gray-500 dark:text-gray-400">
-                             Unlimited projects
+                           Incluye matricula
                          </li>
                          <li class="text-gray-500 dark:text-gray-400">
                              Unlimited collaborators
