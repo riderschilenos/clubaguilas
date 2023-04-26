@@ -100,12 +100,15 @@
    
    <div class="mx-20 bg-white dark:bg-gray-900">
       <div class="container px-6 py-8 mx-auto">
-          <p class="text-xl text-center text-gray-500 dark:text-gray-300">
-              Choose your plan
-          </p>
 
-          <h1 class="mt-4 text-3xl font-semibold text-center text-gray-800 capitalize lg:text-4xl dark:text-white">Pricing Plan</h1>
-      
+         <div class="container mx-auto px-6 text-center">
+            <div class="mx-auto max-w-lg">
+            <p class="mt-6 text-gray-500 dark:text-gray-300">Todos los alumnos al momento de ingresar deberán hacer pago de Matricula, esta consta de una duración de un año.</p>
+            <button class="mt-6 rounded-lg bg-green-600 px-6 py-2.5 text-center text-sm font-medium capitalize leading-5 text-white hover:bg-green-500 focus:outline-none lg:mx-0 lg:w-auto">Start 14-Day free trial</button>
+            <p class="mt-3 text-sm text-gray-400">No credit card required</p>
+            </div>
+        </div>
+
           
           <div class="bg-white dark:bg-gray-800">
             <div class="container px-6 py-8 mx-auto">
