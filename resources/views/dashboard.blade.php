@@ -222,6 +222,46 @@
                             Start free trial
                         </button>
                     </div>
+                    <div class="flex flex-col w-full max-w-sm p-8 space-y-8 text-center bg-white border-2 border-gray-200 rounded-lg lg:mx-4 dark:bg-gray-800 dark:border-gray-700">
+                     <div class="flex-shrink-0">
+                         <h2
+                             class="inline-flex items-center justify-center px-2 font-semibold tracking-tight text-blue-400 uppercase rounded-lg bg-gray-50 dark:bg-gray-700"
+                         >
+                             Expert
+                         </h2>
+                     </div>
+                     <div class="flex-shrink-0">
+                         <span
+                             class="pt-2 text-4xl font-bold text-gray-800 uppercase dark:text-gray-100"
+                         >
+                             $49.90
+                         </span>
+                         <span class="text-gray-500 dark:text-gray-400">
+                             /month
+                         </span>
+                     </div>
+                     <ul class="flex-1 space-y-4">
+                         <li class="text-gray-500 dark:text-gray-400">
+                             Unlimited projects
+                         </li>
+                         <li class="text-gray-500 dark:text-gray-400">
+                             Unlimited collaborators
+                         </li>
+                         <li class="text-gray-500 dark:text-gray-400">
+                             Unlimited storage
+                         </li>
+                         <li class="text-gray-500 dark:text-gray-400">
+                             Real-time collaborations
+                         </li>
+                         <li class="text-gray-500 dark:text-gray-400">
+                             24x7 Support
+                         </li>
+                     </ul>
+     
+                     <button class="inline-flex items-center justify-center px-4 py-2 font-semibold text-white uppercase transition-colors bg-blue-500 rounded-lg hover:bg-blue-700 focus:outline-none">
+                         Start free trial
+                     </button>
+                 </div>
                 </div>
             </div>
         </div>
