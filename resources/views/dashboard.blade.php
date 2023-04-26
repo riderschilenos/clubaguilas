@@ -139,7 +139,7 @@
                         <button
                             class="inline-flex items-center justify-center px-4 py-2 font-semibold text-white uppercase transition-colors bg-blue-500 rounded-lg hover:bg-blue-700 focus:outline-none"
                         >
-                            Start free
+                      SELECCIONAR
                         </button>
                     </div>
         
@@ -175,7 +175,7 @@
                         <button
                             class="inline-flex items-center justify-center px-4 py-2 font-semibold text-white uppercase transition-colors bg-blue-500 rounded-lg hover:bg-blue-700 focus:outline-none"
                         >
-                            Start free trial
+                            SELECCIONAR
                         </button>
                     </div>
         
@@ -193,7 +193,7 @@
                             </span>
                         </div>
                         <ul class="flex-1 space-y-4">
-                            <li class="text-gray-500 dark:text-gray-400">
+                            <li class="text-gray-500 dark:text-gray-400 font-bold">
                               Incluye matricula
                             </li>
                             <li class="text-gray-500 dark:text-gray-400">
@@ -228,7 +228,7 @@
                          </span>
                      </div>
                      <ul class="flex-1 space-y-4">
-                         <li class="text-gray-500 dark:text-gray-400">
+                         <li class="text-gray-500 dark:text-gray-400 font-bold">
                            Incluye matricula
                          </li>
                          <li class="text-gray-500 dark:text-gray-400">
@@ -246,7 +246,7 @@
                      </ul>
      
                      <button class="inline-flex items-center justify-center px-4 py-2 font-semibold text-white uppercase transition-colors bg-blue-500 rounded-lg hover:bg-blue-700 focus:outline-none">
-                         Start free trial
+                         SELECCIONAR
                      </button>
                  </div>
                 </div>
