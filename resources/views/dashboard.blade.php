@@ -107,64 +107,124 @@
           <h1 class="mt-4 text-3xl font-semibold text-center text-gray-800 capitalize lg:text-4xl dark:text-white">Pricing Plan</h1>
       
           
-          <div class="mt-6 space-y-8 xl:mt-12">
-              <div class="flex items-center justify-between max-w-2xl px-8 py-4 mx-auto border cursor-pointer rounded-xl dark:border-gray-700">
-                  <div class="flex items-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400 sm:h-9 sm:w-9" viewBox="0 0 20 20" fill="currentColor">
-                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                      </svg>
-
-                      <div class="flex flex-col items-center mx-5 space-y-1">
-                          <h2 class="text-lg font-medium text-gray-700 sm:text-2xl dark:text-gray-200">Basic</h2>
-                          <div class="px-2 text-xs text-blue-500 bg-gray-100 rounded-full sm:px-4 sm:py-1 dark:bg-gray-700 ">
-                              Save 20%
-                          </div>
-                      </div>
-                  </div>
-                  
-                  <h2 class="text-2xl font-semibold text-gray-500 sm:text-4xl dark:text-gray-300">$49 <span class="text-base font-medium">/Month</span></h2>
-              </div>
-
-              <div class="flex items-center justify-between max-w-2xl px-8 py-4 mx-auto border border-blue-500 cursor-pointer rounded-xl">
-                  <div class="flex items-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-600 sm:h-9 sm:w-9" viewBox="0 0 20 20" fill="currentColor">
-                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                      </svg>
-
-                      <div class="flex flex-col items-center mx-5 space-y-1">
-                          <h2 class="text-lg font-medium text-gray-700 sm:text-2xl dark:text-gray-200">Popular</h2>
-                          <div class="px-2 text-xs text-blue-500 bg-gray-100 rounded-full sm:px-4 sm:py-1 dark:bg-gray-700 ">
-                              Save 20%
-                          </div>
-                      </div>
-                  </div>
-                  
-                  <h2 class="text-2xl font-semibold text-blue-600 sm:text-4xl">$99 <span class="text-base font-medium">/Month</span></h2>
-              </div>
-
-              <div class="flex items-center justify-between max-w-2xl px-8 py-4 mx-auto border cursor-pointer rounded-xl dark:border-gray-700">
-                  <div class="flex items-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400 sm:h-9 sm:w-9" viewBox="0 0 20 20" fill="currentColor">
-                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                      </svg>
-
-                      <div class="flex flex-col items-center mx-5 space-y-1">
-                          <h2 class="text-lg font-medium text-gray-700 sm:text-2xl dark:text-gray-200">Enterprise</h2>
-                          <div class="px-2 text-xs text-blue-500 bg-gray-100 rounded-full sm:px-4 sm:py-1 dark:bg-gray-700 ">
-                              Save 20%
-                          </div>
-                      </div>
-                  </div>
-                  
-                  <h2 class="text-2xl font-semibold text-gray-500 sm:text-4xl dark:text-gray-300">$149 <span class="text-base font-medium">/Month</span></h2>
-              </div>
-
-              <div class="flex justify-center">
-                  <button class="px-8 py-2 tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-80">
-                      Choose Plan
-                  </button>
-              </div>
-          </div>
+          <div class="bg-white dark:bg-gray-800">
+            <div class="container px-6 py-8 mx-auto">
+                <div class="flex flex-col items-center justify-center space-y-8 lg:-mx-4 lg:flex-row lg:items-stretch lg:space-y-0">
+                    <div class="flex flex-col w-full max-w-sm p-8 space-y-8 text-center bg-white border-2 border-gray-200 rounded-lg lg:mx-4 dark:bg-gray-800 dark:border-gray-700">
+                        <div class="flex-shrink-0">
+                            <h2 class="inline-flex items-center justify-center px-2 font-semibold tracking-tight text-blue-400 uppercase rounded-lg bg-gray-50 dark:bg-gray-700">
+                                Casual
+                            </h2>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <span
+                                class="pt-2 text-4xl font-bold text-gray-800 uppercase dark:text-gray-100"
+                            >
+                                Free
+                            </span>
+                        </div>
+                        <ul class="flex-1 space-y-4">
+                            <li class="text-gray-500 dark:text-gray-400">
+                                Up to 5 projects
+                            </li>
+                            <li class="text-gray-500 dark:text-gray-400">
+                                Up to 10 collaborators
+                            </li>
+                            <li class="text-gray-500 dark:text-gray-400">
+                                2Gb of storage
+                            </li>
+                        </ul>
+        
+                        <button
+                            class="inline-flex items-center justify-center px-4 py-2 font-semibold text-white uppercase transition-colors bg-blue-500 rounded-lg hover:bg-blue-700 focus:outline-none"
+                        >
+                            Start free
+                        </button>
+                    </div>
+        
+                    <div class="flex flex-col w-full max-w-sm p-8 space-y-8 text-center bg-white border-2 border-gray-200 rounded-lg lg:mx-4 dark:bg-gray-800 dark:border-gray-700">
+                        <div class="flex-shrink-0">
+                            <h2
+                                class="inline-flex items-center justify-center px-2 font-semibold tracking-tight text-blue-400 uppercase rounded-lg bg-gray-50 dark:bg-gray-700"
+                            >
+                                Profesional
+                            </h2>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <span
+                                class="pt-2 text-4xl font-bold text-gray-800 uppercase dark:text-gray-100"
+                            >
+                                $24.90
+                            </span>
+                            <span class="text-gray-500 dark:text-gray-400">
+                                /month
+                            </span>
+                        </div>
+                        <ul class="flex-1 space-y-4">
+                            <li class="text-gray-500 dark:text-gray-400">
+                                Up to 10 projects
+                            </li>
+                            <li class="text-gray-500 dark:text-gray-400">
+                                Up to 20 collaborators
+                            </li>
+                            <li class="text-gray-500 dark:text-gray-400">
+                                10Gb of storage
+                            </li>
+                            <li class="text-gray-500 dark:text-gray-400">
+                                Real-time collaborations
+                            </li>
+                        </ul>
+        
+                        <button
+                            class="inline-flex items-center justify-center px-4 py-2 font-semibold text-white uppercase transition-colors bg-blue-500 rounded-lg hover:bg-blue-700 focus:outline-none"
+                        >
+                            Start free trial
+                        </button>
+                    </div>
+        
+                    <div class="flex flex-col w-full max-w-sm p-8 space-y-8 text-center bg-white border-2 border-gray-200 rounded-lg lg:mx-4 dark:bg-gray-800 dark:border-gray-700">
+                        <div class="flex-shrink-0">
+                            <h2
+                                class="inline-flex items-center justify-center px-2 font-semibold tracking-tight text-blue-400 uppercase rounded-lg bg-gray-50 dark:bg-gray-700"
+                            >
+                                Expert
+                            </h2>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <span
+                                class="pt-2 text-4xl font-bold text-gray-800 uppercase dark:text-gray-100"
+                            >
+                                $49.90
+                            </span>
+                            <span class="text-gray-500 dark:text-gray-400">
+                                /month
+                            </span>
+                        </div>
+                        <ul class="flex-1 space-y-4">
+                            <li class="text-gray-500 dark:text-gray-400">
+                                Unlimited projects
+                            </li>
+                            <li class="text-gray-500 dark:text-gray-400">
+                                Unlimited collaborators
+                            </li>
+                            <li class="text-gray-500 dark:text-gray-400">
+                                Unlimited storage
+                            </li>
+                            <li class="text-gray-500 dark:text-gray-400">
+                                Real-time collaborations
+                            </li>
+                            <li class="text-gray-500 dark:text-gray-400">
+                                24x7 Support
+                            </li>
+                        </ul>
+        
+                        <button class="inline-flex items-center justify-center px-4 py-2 font-semibold text-white uppercase transition-colors bg-blue-500 rounded-lg hover:bg-blue-700 focus:outline-none">
+                            Start free trial
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
       </div>
   </div>
 </x-app-layout>
