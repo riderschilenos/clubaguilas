@@ -119,12 +119,11 @@
                             </h2>
                         </div>
                         <div class="flex-shrink-0">
-                            <span
-                                class="pt-2 text-4xl font-bold text-gray-800 uppercase dark:text-gray-100"
-                            >
-                                Free
-                            </span>
-                        </div>
+                           <span class="pt-2 text-4xl font-bold text-gray-800 uppercase dark:text-gray-100">
+                               $60.000
+                           </span>
+                           
+                       </div>
                         <ul class="flex-1 space-y-4">
                             <li class="text-gray-500 dark:text-gray-400">
                                 Up to 5 projects
@@ -153,14 +152,10 @@
                             </h2>
                         </div>
                         <div class="flex-shrink-0">
-                            <span
-                                class="pt-2 text-4xl font-bold text-gray-800 uppercase dark:text-gray-100"
-                            >
-                                $24.90
+                            <span class="pt-2 text-4xl font-bold text-gray-800 uppercase dark:text-gray-100">
+                              $150.000
                             </span>
-                            <span class="text-gray-500 dark:text-gray-400">
-                                /month
-                            </span>
+                           
                         </div>
                         <ul class="flex-1 space-y-4">
                             <li class="text-gray-500 dark:text-gray-400">
@@ -193,13 +188,8 @@
                             </h2>
                         </div>
                         <div class="flex-shrink-0">
-                            <span
-                                class="pt-2 text-4xl font-bold text-gray-800 uppercase dark:text-gray-100"
-                            >
-                                $49.90
-                            </span>
-                            <span class="text-gray-500 dark:text-gray-400">
-                                /month
+                           <span class="pt-2 text-4xl font-bold text-gray-800 uppercase dark:text-gray-100">
+                              $290.000
                             </span>
                         </div>
                         <ul class="flex-1 space-y-4">
@@ -233,13 +223,8 @@
                          </h2>
                      </div>
                      <div class="flex-shrink-0">
-                         <span
-                             class="pt-2 text-4xl font-bold text-gray-800 uppercase dark:text-gray-100"
-                         >
-                             $49.90
-                         </span>
-                         <span class="text-gray-500 dark:text-gray-400">
-                             /month
+                        <span class="pt-2 text-4xl font-bold text-gray-800 uppercase dark:text-gray-100">
+                           $580.000
                          </span>
                      </div>
                      <ul class="flex-1 space-y-4">
