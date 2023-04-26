@@ -104,8 +104,7 @@
          <div class="container mx-auto px-6 text-center">
             <div class="mx-auto max-w-lg">
             <p class="mt-6 text-gray-500 dark:text-gray-300">Todos los alumnos al momento de ingresar deberán hacer pago de Matricula, esta consta de una duración de un año.</p>
-            <button class="mt-6 rounded-lg bg-green-600 px-6 py-2.5 text-center text-sm font-medium capitalize leading-5 text-white hover:bg-green-500 focus:outline-none lg:mx-0 lg:w-auto">Start 14-Day free trial</button>
-            <p class="mt-3 text-sm text-gray-400">No credit card required</p>
+            <button class="mt-6 rounded-lg bg-green-600 px-6 py-2.5 text-center text-sm font-medium capitalize leading-5 text-white hover:bg-green-500 focus:outline-none lg:mx-0 lg:w-auto">Ver disponibilidad de clase de prueba</button>
             </div>
         </div>
 
