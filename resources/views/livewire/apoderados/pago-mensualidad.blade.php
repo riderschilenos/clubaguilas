@@ -73,7 +73,7 @@
                                                                 
                                     </div>
                                     <div>
-                                        @switch($pedido->transportista->id)
+                                        @switch($plan)
                                         @case(1)
                                             Plan Menssual
                                             @break
