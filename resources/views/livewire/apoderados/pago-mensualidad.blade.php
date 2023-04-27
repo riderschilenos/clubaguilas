@@ -72,7 +72,25 @@
                                         </svg>
                                                                 
                                     </div>
-                                    <div>Valor Plan</div>
+                                    <div>
+                                        @switch($pedido->transportista->id)
+                                        @case(1)
+                                            Plan Menssual
+                                            @break
+                                        @case(2)
+                                            Plan Trimestral
+                                            @break
+                                        @case(3)
+                                            Plan Semestral
+                                            @break
+                                        @case(4)
+                                            Plan Anual
+                                            @break
+                                        
+                                        @default
+                                            
+                                    @endswitch
+                                    </div>
                                 </div>
                                 <div>
                                ${{number_format($valor_plan)}}         
