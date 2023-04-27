@@ -73,7 +73,7 @@
                                                                 
                                     </div>
                                     <div>
-                                        @switch($plan)
+                                    @switch($plan)
                                         @case(1)
                                             Plan Menssual
                                             @break
@@ -109,7 +109,23 @@
                                 <div>Total</div>
                             </div>
                             <div>
-                               $106.000             
+                                @switch($plan)
+                                @case(1)
+                                    $106.000
+                                    @break
+                                @case(2)
+                                    $170.000
+                                    @break
+                                @case(3)
+                                    $290.000
+                                    @break
+                                @case(4)
+                                    $580.000
+                                    @break
+                                
+                                @default
+                                    
+                            @endswitch           
                             </div>
                         </div>
                     </div>
