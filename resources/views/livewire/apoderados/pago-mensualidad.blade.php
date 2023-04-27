@@ -130,8 +130,8 @@
                         </div>
                     </div>
                     <div class="flex justify-center">
-                        <button wire:click="plan_clean" class="mt-6 rounded-lg bg-red-600 px-6 py-2.5 text-center text-sm font-medium capitalize leading-5 text-white hover:bg-red-500 focus:outline-none lg:mx-0 lg:w-auto">Cancelar</button>
-                        <button wire:click="plan_clean" class="mt-6 rounded-lg bg-green-600 px-6 py-2.5 text-center text-sm font-medium capitalize leading-5 text-white hover:bg-green-500 focus:outline-none lg:mx-2 lg:w-auto">Pagar</button>
+                        <button wire:click="plan_clean" class="mt-6 rounded-lg bg-red-600 px-6 py-2.5 text-center text-sm font-medium capitalize leading-5 text-white hover:bg-red-500 focus:outline-none mx-2 lg:w-auto">Cancelar</button>
+                        <button wire:click="plan_clean" class="mt-6 rounded-lg bg-green-600 px-6 py-2.5 text-center text-sm font-medium capitalize leading-5 text-white hover:bg-green-500 focus:outline-none mx-2 lg:w-auto">Pagar</button>
                     
                     </div> 
                     
