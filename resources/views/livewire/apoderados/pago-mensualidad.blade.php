@@ -28,7 +28,7 @@
                                 <div>Matricula</div>
                             </div>
                             <div>
-                               $20.000             
+                               ${{number_format($matricula)}}           
                             </div>
                         </div>
                         <div class="flex justify-between items-center border-b border-slate-200 py-3 px-2 border-l-4  border-l-transparent bg-gradient-to-r from-transparent to-transparent hover:from-slate-100 transition ease-linear duration-150">
