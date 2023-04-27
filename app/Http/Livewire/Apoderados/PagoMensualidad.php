@@ -37,5 +37,7 @@ class PagoMensualidad extends Component
         $this->plan=NULL;
         $this->matricula=NULL;
         $this->proporcional=NULL;
+        $this->siguiente=False;
+        $this->valor_plan=NULL;
     }
 }
