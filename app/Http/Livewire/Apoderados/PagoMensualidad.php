@@ -31,5 +31,7 @@ class PagoMensualidad extends Component
 
     public function plan_clean(){
         $this->plan=NULL;
+        $this->matricula=NULL;
+        $this->proporcional=NULL;
     }
 }
