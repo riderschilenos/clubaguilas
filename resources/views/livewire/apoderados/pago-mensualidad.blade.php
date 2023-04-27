@@ -2,7 +2,7 @@
     <div class="mx-20 bg-white dark:bg-gray-900">
       <div class="container px-6 py-8 mx-auto">
 
-         <div class="container mx-auto px-6 text-center">
+         <div class="mx-auto px-6 text-center">
             <div class="mx-auto max-w-lg">
             <p class="mt-6 text-gray-500 dark:text-gray-300">Todos los alumnos al momento de ingresar deberán hacer pago de <b>Matricula</b>, esta consta de una duración de un año.</p>
             </div>
@@ -10,7 +10,7 @@
 
           
           <div class="bg-white dark:bg-gray-800">
-            <div class="container px-6 py-8 mx-auto">
+            <div class="px-6 pb-8 mx-auto">
 
                 @if ($plan) 
 
@@ -80,8 +80,8 @@
                     </div> 
                     
                 @else
-                <div class="flex justify-center">
-                    <button class="mt-6 rounded-lg bg-green-600 px-6 py-2.5 text-center text-sm font-medium capitalize leading-5 text-white hover:bg-green-500 focus:outline-none lg:mx-0 lg:w-auto">Ver disponibilidad de clase de prueba</button>
+                <div class="flex justify-center mb-6">
+                    <button class="mt-4 rounded-lg bg-green-600 px-6 py-2.5 text-center text-sm font-medium capitalize leading-5 text-white hover:bg-green-500 focus:outline-none lg:mx-0 lg:w-auto">Ver disponibilidad de clase de prueba</button>
                 </div> 
                     <div class="flex flex-col items-center justify-center space-y-8 lg:-mx-4 lg:flex-row lg:items-stretch lg:space-y-0">
                         
