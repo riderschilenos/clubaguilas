@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Apoderados;
 use Livewire\Component;
 
 class PagoMensualidad extends Component
-{   public $plan,$matricula;
+{   public $plan,$matricula,$proporcional;
 
     public function render()
     {
@@ -16,6 +16,7 @@ class PagoMensualidad extends Component
         $this->plan=$id;
         if($this->plan==1){
             $this->matricula=20000;
+            $this->proporcional=26000;
         }
         if($this->plan==2){
             $this->matricula=20000;
