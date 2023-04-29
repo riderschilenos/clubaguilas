@@ -87,7 +87,7 @@ class PagoMensualidad extends Component
         $this->validate ($rules);
 
         if($this->plan==1){
-            $valor=20000;
+            $valor=106000;
             $date=date('Y-m-d', strtotime(Carbon::now()."+ 1 month"));
         }
         if($this->plan==2){
