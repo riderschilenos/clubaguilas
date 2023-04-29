@@ -193,11 +193,15 @@
                                                 }
                                             @endphp
 
-
+                                                @if ($estado=='ACTIVO')
+                                                    <button class="py-3 px-3 text-sm focus:outline-none leading-none text-green-700 bg-green-100 rounded">{{$estado}}</button>
+                                                @else
+                                                    <button class="py-3 px-3 text-sm focus:outline-none leading-none text-red-700 bg-red-100 rounded">{{$estado}}</button>
+                                                @endif
                                            
                                              
                                                     
-                                                        <button class="py-3 px-3 text-sm focus:outline-none leading-none text-red-700 bg-red-100 rounded">{{$estado}}</button>
+                                                        
                                                        
                                                
                                             
