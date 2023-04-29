@@ -38,8 +38,8 @@
                      
     @endphp
 
-    <div class="mx-20 bg-white dark:bg-gray-900">
-      <div class="container px-6 py-8 mx-auto">
+    <div class="mx-4 px-4 md:mx-20 bg-white dark:bg-gray-900">
+      <div class="container px-2 py-8 mx-auto">
         @if (IS_NULL($suscripcion))
             <div class="mx-auto px-6 text-center">
                 <div class="mx-auto max-w-lg">
@@ -50,11 +50,11 @@
 
           
           <div class="bg-white dark:bg-gray-800">
-            <div class="px-6 pb-8 mx-auto">
+            <div class="pb-8 ">
             
             @if ($suscripcion)
-            <div class="flex">
-                <div class="px-3 md:w-5/12 lg:pr-10">
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="lg:pr-10">
                     <div class="w-full mx-auto text-gray-800 font-light mb-6 border-b border-gray-200 pb-6">
                         <div class="w-full flex items-center">
                             <div class="overflow-hidden rounded-lg w-16 h-16 bg-gray-50 border border-gray-200">
@@ -111,7 +111,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="bg-white h-54 md:w-7/12 rounded-xl p-6 shadow-lg flex items-center justify-around col-span-2">
+                <div class="bg-white h-54 rounded-xl p-6 shadow-lg flex items-center justify-around">
                             
                     <div class="text-center">
                     
