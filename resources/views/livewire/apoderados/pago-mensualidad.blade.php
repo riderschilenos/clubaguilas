@@ -38,12 +38,12 @@
                      
     @endphp
 
-    <div class="mx-4 px-4 md:mx-20 bg-white dark:bg-gray-900">
+    <div class="mx-4 px-4 md:mx-20 bg-white">
       <div class="container px-2 py-8 mx-auto">
         @if (IS_NULL($suscripcion))
             <div class="mx-auto px-6 text-center">
                 <div class="mx-auto max-w-lg">
-                <p class="mt-6 text-gray-500 dark:text-gray-300">Todos los alumnos al momento de ingresar deberán hacer pago de <b>Matricula</b>, esta consta de una duración de un año.</p>
+                <p class="mt-6 text-gray-500">Todos los alumnos al momento de ingresar deberán hacer pago de <b>Matricula</b>, esta consta de una duración de un año.</p>
                 </div>
             </div>
         @endif
