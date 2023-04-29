@@ -6,6 +6,7 @@ use App\Actions\Fortify\CreateNewUser;
 use App\Models\Calidad;
 use App\Models\Especie;
 use App\Models\Recepcion;
+use App\Models\Suscripcion;
 use App\Models\Sync;
 use App\Models\User;
 use App\Models\Variedad;
@@ -28,10 +29,11 @@ class HomeController extends Controller
     }
     public function dashboard () {
         $users=User::all();
+        $suscripcions=Suscripcion::where('estado',3);
         $recepcions=Recepcion::all();
         $prop_recep=Recepcion::where('r_emisor',auth()->user()->rut)
         ->latest('id')->get();
-        return view('dashboard',compact('users','recepcions','prop_recep'));
+        return view('dashboard',compact('suscripcions','users','recepcions','prop_recep'));
     }
 
     public function downloadpdf(Recepcion $recepcion) {

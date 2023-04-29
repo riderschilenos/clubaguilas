@@ -181,7 +181,28 @@
                                         </td>
                                     
                                         <td class="pl-5">
-                                            <button class="py-3 px-3 text-sm focus:outline-none leading-none text-red-700 bg-red-100 rounded">Inactivo</button>
+                                            @php
+                                                $estado='INACTIVO';
+                                                if($user->suscripcions){
+                                                    foreach ($user->suscripcions as $item) {
+                                                        if ($item->estado==1) {
+                                                            $estado='ACTIVO';
+                                                            break;
+                                                        }
+                                                    }
+                                                }
+                                            @endphp
+
+
+                                           
+                                             
+                                                    
+                                                        <button class="py-3 px-3 text-sm focus:outline-none leading-none text-red-700 bg-red-100 rounded">{{$estado}}</button>
+                                                       
+                                               
+                                            
+                                            
+
                                         </td>
                                                     {{-- commen
                                         <td class="pl-4">

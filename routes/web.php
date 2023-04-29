@@ -60,3 +60,5 @@ Route::resource('role', RoleController::class)->names('admin.roles');
 Route::resource('users', UserController::class)->only(['index','edit','update','destroy'])->names('users');
 
 Route::get('registro/usuarios', [ClubController::class,'create'])->name('registro.usuarios');
+
+Route::get('comprobantes/check', [ClubController::class,'index'])->name('comprobantes.check');

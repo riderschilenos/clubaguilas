@@ -13,7 +13,9 @@ class Suscripcion extends Model
 
     const ACTIVA =1;
     const INACTIVA =2;
-    const BLOQUEADA =3;
+    const PENDIENTE =3;
+    const RECHAZADA =4;
+    const BLOQUEADA =5;
 
     // relacion uno a muchos inversa
     public function user(){

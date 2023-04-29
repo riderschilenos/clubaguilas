@@ -29,7 +29,7 @@ return new class extends Migration
 
                 $table->string('comprobante')->nullable();
 
-                $table->enum('estado',[Suscripcion::ACTIVA,Suscripcion::INACTIVA,Suscripcion::BLOQUEADA])->default(Suscripcion::INACTIVA);
+                $table->enum('estado',[Suscripcion::ACTIVA,Suscripcion::INACTIVA,Suscripcion::PENDIENTE,Suscripcion::RECHAZADA,Suscripcion::BLOQUEADA])->default(Suscripcion::INACTIVA);
 
             $table->timestamps();
         });

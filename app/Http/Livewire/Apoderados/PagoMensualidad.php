@@ -5,16 +5,22 @@ namespace App\Http\Livewire\Apoderados;
 use App\Models\Suscripcion;
 use Carbon\Carbon;
 use Livewire\Component;
+use Illuminate\support\Str;
+use Intervention\Image\Facades\Image;
+use Livewire\WithFileUploads;
 
 class PagoMensualidad extends Component
 {   public $plan,$matricula,$proporcional,$siguiente,$valor_plan,$suscrip;
-    public $selectedTransfencia, $selectedMercadopago, $titulo;
+    public $selectedTransfencia, $selectedMercadopago, $titulo, $file;
+
+    use WithFileUploads;
 
     public function mount(){
         $suscripcion=Suscripcion::where('user_id',auth()->user()->id)
                 ->where('estado',2)
                 ->first();
         if($suscripcion){
+            
             if($suscripcion->metodo=='TRANSFERENCIA'){
                 $this->selectedTransfencia=TRUE;
                 $this->selectedMercadopago=FALSE;
@@ -43,6 +49,7 @@ class PagoMensualidad extends Component
     public function render()
     {   $suscripcion=Suscripcion::where('user_id',auth()->user()->id)
                 ->where('estado',2)
+                ->orwhere('estado',3)
                 ->first();
                 
         return view('livewire.apoderados.pago-mensualidad',compact('suscripcion'));
@@ -137,6 +144,33 @@ class PagoMensualidad extends Component
         $suscripcion->save();
         return redirect()->route('dashboard');
 
+    }
+
+    public function enviar(Suscripcion $suscripcion)
+    {   
+        if($this->file){
+                
+            $foto = Str::random(10).$this->file->getClientOriginalName();
+            $rutafoto = public_path().'/storage/comprobantes/'.$foto;
+            $img=Image::make($this->file)->orientate()
+                ->resize(600, null , function($constraint){
+                $constraint->aspectRatio();
+                })
+                ->save($rutafoto);
+            $img->orientate();
+            $suscripcion->estado=3;
+            $suscripcion->comprobante=$foto;
+            
+            $suscripcion->save();
+
+        }else{
+            $foto='nn';
+        }
+
+        
+
+        $this->reset(['file']);
+        
     }
 
 

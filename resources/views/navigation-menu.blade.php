@@ -20,6 +20,11 @@
                             {{ __('Apoderados') }}
                         </x-jet-nav-link>
                     @endcan
+                    @can('Ver usuarios registrados')
+                        <x-jet-nav-link href="{{ route('comprobantes.check') }}" :active="request()->routeIs('comprobantes.check')">
+                            {{ __('Comprobantes') }}
+                        </x-jet-nav-link>
+                    @endcan
                     
                     @can('Ver produccion_total')
                         <x-jet-nav-link href="{{ route('production.index') }}" :active="request()->routeIs('production.index')">

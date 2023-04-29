@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Suscripcion;
 use Illuminate\Http\Request;
 
 class ClubController extends Controller
@@ -12,8 +13,8 @@ class ClubController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   
+        return view('club.comprobante');
     }
 
     /**
