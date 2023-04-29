@@ -150,13 +150,13 @@
                                                                 <div class="flex form-check">
                                                                 <input type="radio" name="type" id="propio" value="" class="mr-2 mt-4" checked wire:click="updateselectedtransferencia({{$suscripcion->id}})">
                                                                 <label for="propio" class="text-xl md:text-3xl font-bold text-gray-800">
-                                                                    <img class="h-14 w-38 object-contain" src="{{asset('image/transferencia.png')}}" alt="">
+                                                                    <img class="h-14 w-28 object-contain" src="{{asset('image/transferencia.png')}}" alt="">
                                                                 </label>
                                                                 </div>
                                                                 <div class="flex ml-4 form-check">
                                                                 <input type="radio" name="type" id="propio" value="" class="mr-2 mt-4" wire:click="updateselectedmercadopago({{$suscripcion->id}})">
                                                                 <label for="propio" class="text-xl md:text-3xl font-bold text-gray-800" >
-                                                                        <img class="h-14 w-38 object-contain" src="{{asset('image/mercadopago.png')}}" alt="">
+                                                                        <img class="h-14 w-28 object-contain" src="{{asset('image/mercadopago.png')}}" alt="">
                                                                 </label>
                                                                 </div>
                                                             </div>
@@ -165,13 +165,13 @@
                                                                 <div class="flex form-check">
                                                                 <input type="radio" name="type" id="propio" value="" class="mr-2 mt-4"  wire:click="updateselectedtransferencia({{$suscripcion->id}})">
                                                                 <label for="propio" class="text-xl md:text-3xl font-bold text-gray-800">
-                                                                    <img class="h-14 w-38 object-contain" src="{{asset('image/transferencia.png')}}" alt="">
+                                                                    <img class="h-14 w-28 object-contain" src="{{asset('image/transferencia.png')}}" alt="">
                                                                 </label>
                                                                 </div>
                                                                 <div class="flex ml-4 form-check">
                                                                 <input type="radio" name="type" id="propio" value="" class="mr-2 mt-4" checked wire:click="updateselectedmercadopago({{$suscripcion->id}})">
                                                                 <label for="propio" class="text-xl md:text-3xl font-bold text-gray-800" >
-                                                                        <img class="h-14 w-38 object-contain" src="{{asset('image/mercadopago.png')}}" alt="">
+                                                                        <img class="h-14 w-28 object-contain" src="{{asset('image/mercadopago.png')}}" alt="">
                                                                 </label>
                                                                 </div>
                                                             </div>
