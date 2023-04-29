@@ -49,7 +49,7 @@
         @endif
 
           
-          <div class="bg-white dark:bg-gray-800">
+          <div class="bg-white">
             <div class="pb-8 ">
             
             @if ($suscripcion)
