@@ -29,7 +29,7 @@ class HomeController extends Controller
     }
     public function dashboard () {
         $users=User::all();
-        $suscripcions=Suscripcion::where('estado',3);
+        $suscripcions=Suscripcion::where('estado',3)->get();
         $recepcions=Recepcion::all();
         $prop_recep=Recepcion::where('r_emisor',auth()->user()->rut)
         ->latest('id')->get();

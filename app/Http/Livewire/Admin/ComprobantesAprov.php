@@ -8,7 +8,7 @@ use Livewire\Component;
 class ComprobantesAprov extends Component
 {
     public function render()
-    {   $suscripcions=Suscripcion::where('estado',3);
+    {   $suscripcions=Suscripcion::where('estado',3)->get();
         return view('livewire.admin.comprobantes-aprov',compact('suscripcions'));
     }
 
