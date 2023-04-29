@@ -137,7 +137,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="bg-white h-54 rounded-xl py-6 shadow-lg flex items-center justify-around">
+                        <div class="bg-white w-full h-54 rounded-xl py-6 flex items-center justify-around">
                                     
                             <div class="text-center">
                             
