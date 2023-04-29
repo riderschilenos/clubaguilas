@@ -201,7 +201,7 @@
                                                                     <img class="h-14" src="{{asset('image/cargando.gif')}}" alt="">
                                                                 </div>
                                                             
-                                                                    <input wire:model="file" type="file" class="form-input flex-1 bg-gray-200">                                      
+                                                                    <input wire:model="file" type="file" class="form-input flex-1 bg-gray-200 mx-4">                                      
                                                                 
                                                                 
 
