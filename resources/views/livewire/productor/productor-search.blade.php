@@ -51,7 +51,7 @@
                                 <th class="text-center">Reset Password</th>
                                 <th>CELULAR</th>
                                 <th>EMAIL</th>
-                                <th>ULTIMA MODIFICACIÓN</th>
+                                <th class="text-left">Fecha Vencimiento</th>
                                 
                                 <th>Estado</th>
                             </thead>
@@ -167,12 +167,24 @@
                                                 </p>
                                             </div>
                                         </td>
-                                        <td class="pl-5">
+                                        @php
+                                            $estado='INACTIVO';
+                                            if($user->suscripcions){
+                                                foreach ($user->suscripcions as $item) {
+                                                    if ($item->estado==1) {
+                                                        $estado='ACTIVO';
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                        @endphp
+                                        
+                                        <td class="">
                                             <div class="flex items-center whitespace-nowrap">
                                             
                                                 <p class="whitespace-nowrap text-base font-medium leading-none text-gray-700 mr-2">
-                                                    @if ($user->updated_at!=$user->created_at)
-                                                        {{date('d M Y g:i a', strtotime($user->updated_at))}}
+                                                    @if ($estado)
+                                                        {{date('d M Y', strtotime($item->end_date))}}
                                                         
                                                         
                                                     @endif
@@ -181,17 +193,7 @@
                                         </td>
                                     
                                         <td class="pl-5">
-                                            @php
-                                                $estado='INACTIVO';
-                                                if($user->suscripcions){
-                                                    foreach ($user->suscripcions as $item) {
-                                                        if ($item->estado==1) {
-                                                            $estado='ACTIVO';
-                                                            break;
-                                                        }
-                                                    }
-                                                }
-                                            @endphp
+                                           
 
                                                 @if ($estado=='ACTIVO')
                                                     <button class="py-3 px-3 text-sm focus:outline-none leading-none text-green-700 bg-green-100 rounded">{{$estado}}</button>
