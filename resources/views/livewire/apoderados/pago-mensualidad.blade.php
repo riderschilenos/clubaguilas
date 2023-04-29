@@ -65,7 +65,7 @@
                                 <p class="text-gray-400">x 1</p>
                             </div>
                             <div>
-                                <span class="font-semibold text-gray-600 text-xl">$210</span><span class="font-semibold text-gray-600 text-sm">.00</span>
+                                <span class="font-semibold text-gray-600 text-xl">${{number_format($suscripcion->valor)}}</span><span class="font-semibold text-gray-600 text-sm"></span>
                             </div>
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                                 <span class="text-gray-600">Subtotal</span>
                             </div>
                             <div class="pl-3">
-                                <span class="font-semibold">$190.91</span>
+                                <span class="font-semibold">${{number_format($suscripcion->valor)}}</span>
                             </div>
                         </div>
                         <div class="w-full flex items-center">
@@ -106,7 +106,7 @@
                                 <span class="text-gray-600">Total</span>
                             </div>
                             <div class="pl-3">
-                                <span class="font-semibold text-gray-400 text-sm">AUD</span> <span class="font-semibold">$210.00</span>
+                                <span class="font-semibold">${{number_format($suscripcion->valor)}}</span>
                             </div>
                         </div>
                     </div>
