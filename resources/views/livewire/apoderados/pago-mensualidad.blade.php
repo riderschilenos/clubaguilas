@@ -109,6 +109,14 @@
                                 </div>
                             </div>
                             <div class="mb-6 pb-6 border-b border-gray-200 text-gray-800">
+                                <div class="w-full flex items-center">
+                                    <div class="flex-grow">
+                                        <span class="text-gray-600">Duración</span>
+                                    </div>
+                                    <div class="pl-3">
+                                        <span class="font-semibold">{{$titulo}}</span>
+                                    </div>
+                                </div>
                                 <div class="w-full flex mb-3 items-center">
                                     <div class="flex-grow">
                                         <span class="text-gray-600">Subtotal</span>
@@ -117,14 +125,7 @@
                                         <span class="font-semibold">${{number_format($suscripcion->valor)}}</span>
                                     </div>
                                 </div>
-                                <div class="w-full flex items-center">
-                                    <div class="flex-grow">
-                                        <span class="text-gray-600">Taxes (GST)</span>
-                                    </div>
-                                    <div class="pl-3">
-                                        <span class="font-semibold">$19.09</span>
-                                    </div>
-                                </div>
+                               
                             </div>
                             <div class="mb-6 pb-6 border-b border-gray-200 md:border-none text-gray-800 text-xl">
                                 <div class="w-full flex items-center">
