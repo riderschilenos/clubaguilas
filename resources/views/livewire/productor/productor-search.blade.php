@@ -183,7 +183,7 @@
                                             <div class="flex items-center whitespace-nowrap">
                                             
                                                 <p class="whitespace-nowrap text-base font-medium leading-none text-gray-700 mr-2">
-                                                    @if ($user->suscripcions)
+                                                    @if ($user->suscripcions->count())
                                                         {{date('d M Y', strtotime($item->end_date))}}
                                                         
                                                         
