@@ -146,7 +146,7 @@
                                             
                                                         <p class="px-12 pb-4">Selecciona el método de pago:</p>
                                                         @if ($suscripcion->metodo=='TRANSFERENCIA')
-                                                            <div class="form-group flex justify-center">
+                                                            <div class="form-group flex justify-center mx-4">
                                                                 <div class="flex form-check">
                                                                 <input type="radio" name="type" id="propio" value="" class="mr-2 mt-4" checked wire:click="updateselectedtransferencia({{$suscripcion->id}})">
                                                                 <label for="propio" class="text-xl md:text-3xl font-bold text-gray-800">
@@ -161,7 +161,7 @@
                                                                 </div>
                                                             </div>
                                                         @else
-                                                            <div class="form-group flex justify-center">
+                                                            <div class="form-group flex justify-center mx-4">
                                                                 <div class="flex form-check">
                                                                 <input type="radio" name="type" id="propio" value="" class="mr-2 mt-4"  wire:click="updateselectedtransferencia({{$suscripcion->id}})">
                                                                 <label for="propio" class="text-xl md:text-3xl font-bold text-gray-800">
