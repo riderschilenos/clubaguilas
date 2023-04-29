@@ -1,17 +1,212 @@
 <div>
+    @php
+        // SDK de Mercado Pago
+         require base_path('/vendor/autoload.php');
+         // Agrega credenciales
+         MercadoPago\SDK::setAccessToken(config('services.mercadopago.token'));
+
+                    
+         // Crea un objeto de preferencia
+         $preference = new MercadoPago\Preference();
+
+         // Crea un ítem en la preferencia
+         $item = new MercadoPago\Item();
+        $item->title = 'Pago Club Aguilas';
+        $item->quantity = 1;
+        if($suscripcion){
+            $item->unit_price = $suscripcion->valor;
+        }else{
+            $item->unit_price = 1000000;
+        }
+
+                        
+
+        $preference = new MercadoPago\Preference();
+        //...
+        if($suscripcion){
+        $preference->back_urls = array(
+            "success" => "http://www.tu-sitio/failure",
+            "failure" => "http://www.tu-sitio/failure",
+            "pending" => "http://www.tu-sitio/failure"
+        );
+        $preference->auto_return = "approved";
+
+        $preference->items = array($item);
+        $preference->save();
+            }
+
+                     
+    @endphp
+
     <div class="mx-20 bg-white dark:bg-gray-900">
       <div class="container px-6 py-8 mx-auto">
-
-         <div class="mx-auto px-6 text-center">
-            <div class="mx-auto max-w-lg">
-            <p class="mt-6 text-gray-500 dark:text-gray-300">Todos los alumnos al momento de ingresar deberán hacer pago de <b>Matricula</b>, esta consta de una duración de un año.</p>
+        @if (IS_NULL($suscripcion))
+            <div class="mx-auto px-6 text-center">
+                <div class="mx-auto max-w-lg">
+                <p class="mt-6 text-gray-500 dark:text-gray-300">Todos los alumnos al momento de ingresar deberán hacer pago de <b>Matricula</b>, esta consta de una duración de un año.</p>
+                </div>
             </div>
-        </div>
+        @endif
 
           
           <div class="bg-white dark:bg-gray-800">
             <div class="px-6 pb-8 mx-auto">
+            
+            @if ($suscripcion)
+            <div class="flex">
+                <div class="px-3 md:w-5/12 lg:pr-10">
+                    <div class="w-full mx-auto text-gray-800 font-light mb-6 border-b border-gray-200 pb-6">
+                        <div class="w-full flex items-center">
+                            <div class="overflow-hidden rounded-lg w-16 h-16 bg-gray-50 border border-gray-200">
+                                <img src="https://img.freepik.com/foto-gratis/jugador-hockey-partido-sobre-cesped_23-2149668519.jpg" class="w-16 h-16 objet-cover" alt="">
+                            </div>
+                            <div class="flex-grow pl-3">
+                                <h6 class="font-semibold uppercase text-gray-600">{{$titulo}}</h6>
+                                <p class="text-gray-400">x 1</p>
+                            </div>
+                            <div>
+                                <span class="font-semibold text-gray-600 text-xl">$210</span><span class="font-semibold text-gray-600 text-sm">.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-6 pb-6 border-b border-gray-200 hidden">
+                        <div class="-mx-2 flex items-end justify-end">
+                            <div class="flex-grow px-2 lg:max-w-xs">
+                                <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">Discount code</label>
+                                <div>
+                                    <input class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="XXXXXX" type="text"/>
+                                </div>
+                            </div>
+                            <div class="px-2">
+                                <button class="block w-full max-w-xs mx-auto border border-transparent bg-gray-400 hover:bg-gray-500 focus:bg-gray-500 text-white rounded-md px-5 py-2 font-semibold">APPLY</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-6 pb-6 border-b border-gray-200 text-gray-800">
+                        <div class="w-full flex mb-3 items-center">
+                            <div class="flex-grow">
+                                <span class="text-gray-600">Subtotal</span>
+                            </div>
+                            <div class="pl-3">
+                                <span class="font-semibold">$190.91</span>
+                            </div>
+                        </div>
+                        <div class="w-full flex items-center">
+                            <div class="flex-grow">
+                                <span class="text-gray-600">Taxes (GST)</span>
+                            </div>
+                            <div class="pl-3">
+                                <span class="font-semibold">$19.09</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-6 pb-6 border-b border-gray-200 md:border-none text-gray-800 text-xl">
+                        <div class="w-full flex items-center">
+                            <div class="flex-grow">
+                                <span class="text-gray-600">Total</span>
+                            </div>
+                            <div class="pl-3">
+                                <span class="font-semibold text-gray-400 text-sm">AUD</span> <span class="font-semibold">$210.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white h-54 md:w-7/12 rounded-xl p-6 shadow-lg flex items-center justify-around col-span-2">
+                            
+                    <div class="text-center">
+                    
+                
+                                        <div class="form-group">
+                                    
+                                                <p class="px-12 pb-4">Selecciona el método de pago:</p>
+                                                @if ($suscripcion->metodo=='TRANSFERENCIA')
+                                                    <div class="form-group flex justify-center">
+                                                        <div class="flex form-check">
+                                                        <input type="radio" name="type" id="propio" value="" class="mr-2 mt-4" checked wire:click="updateselectedtransferencia({{$suscripcion->id}})">
+                                                        <label for="propio" class="text-xl md:text-3xl font-bold text-gray-800">
+                                                            <img class="h-14 w-38 object-contain" src="{{asset('image/transferencia.png')}}" alt="">
+                                                        </label>
+                                                        </div>
+                                                        <div class="flex ml-4 form-check">
+                                                        <input type="radio" name="type" id="propio" value="" class="mr-2 mt-4" wire:click="updateselectedmercadopago({{$suscripcion->id}})">
+                                                        <label for="propio" class="text-xl md:text-3xl font-bold text-gray-800" >
+                                                                <img class="h-14 w-38 object-contain" src="{{asset('image/mercadopago.png')}}" alt="">
+                                                        </label>
+                                                        </div>
+                                                    </div>
+                                                @else
+                                                    <div class="form-group flex justify-center">
+                                                        <div class="flex form-check">
+                                                        <input type="radio" name="type" id="propio" value="" class="mr-2 mt-4"  wire:click="updateselectedtransferencia({{$suscripcion->id}})">
+                                                        <label for="propio" class="text-xl md:text-3xl font-bold text-gray-800">
+                                                            <img class="h-14 w-38 object-contain" src="{{asset('image/transferencia.png')}}" alt="">
+                                                        </label>
+                                                        </div>
+                                                        <div class="flex ml-4 form-check">
+                                                        <input type="radio" name="type" id="propio" value="" class="mr-2 mt-4" checked wire:click="updateselectedmercadopago({{$suscripcion->id}})">
+                                                        <label for="propio" class="text-xl md:text-3xl font-bold text-gray-800" >
+                                                                <img class="h-14 w-38 object-contain" src="{{asset('image/mercadopago.png')}}" alt="">
+                                                        </label>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                @endif
+                                                
+                                                
+                                        
+                        
+                                        </div>
 
+                                
+                                        @if ($suscripcion->metodo=='TRANSFERENCIA')
+                                            
+                                                    <div>
+                                                        <h1 class="text-xl font-bold text-center py-2 mt-4">Adjunte Comprobante por: ${{number_format($suscripcion->valor)}}</h1>
+
+                                                        <p>Banco de Chile<br>
+                                                            Cta vista NRO 32620352<br>
+                                                            Rut:17.137.526-6<br>
+                                                            Roberto moya miranda<br>
+                                                            Clubhockeymachali@gmail.com</p>
+
+                                                        <hr class="w-full">
+                                                        {!! Form::file('comprobante', ['class'=>'form-input w-full mt-6'.($errors->has('comprobante')?' border-red-600':''), 'id'=>'comprobante','accept'=>'image/*']) !!}
+                                                        @error('foto')
+                                                            <strong class="text-xs text-red-600">{{$message}}</strong>
+                                                        @enderror
+
+                                                        
+                                                    </div>
+
+                                                    {!! Form::hidden('user_id', Auth()->user()->id ) !!}
+                        
+                                                    {!! Form::hidden('metodo', 'TRANSFERENCIA' ) !!}
+
+                                                    {!! Form::hidden('cantidad', $suscripcion->valor ) !!}
+
+                                                
+                                                    
+
+                                                    {!! Form::hidden('estado', '1' ) !!}
+
+                                                    <div class="flex justify-center">
+
+                                                        <button wire:click="suscrip_destroy({{$suscripcion->id}})" class="mt-6 rounded-lg bg-red-600 px-6 py-2.5 text-center text-sm font-medium capitalize leading-5 text-white hover:bg-red-500 focus:outline-none mx-2 lg:w-auto">Cancelar</button>
+                                                        <button class="mt-6 rounded-lg bg-gray-600 px-6 py-2.5 text-center text-sm font-medium capitalize leading-5 text-white hover:bg-gray-500 focus:outline-none mx-2 lg:w-auto">Enviar</button>
+                                                    
+                                                    </div> 
+                                        @else
+                                        
+                                                <div class="cho-container flex justify-center mt-2 mb-4">
+                                                    <!-- Esto es <a href="" class="btn btn-primary">Pagar</a> un comentario -->
+                                                </div>
+                                        @endif
+                                
+                    
+                    </div>
+                </div>
+            </div>
+            @else
                 @if ($plan) 
 
                
@@ -131,7 +326,7 @@
                     </div>
                     <div class="flex justify-center">
                         <button wire:click="plan_clean" class="mt-6 rounded-lg bg-red-600 px-6 py-2.5 text-center text-sm font-medium capitalize leading-5 text-white hover:bg-red-500 focus:outline-none mx-2 lg:w-auto">Cancelar</button>
-                        <button wire:click="plan_clean" class="mt-6 rounded-lg bg-green-600 px-6 py-2.5 text-center text-sm font-medium capitalize leading-5 text-white hover:bg-green-500 focus:outline-none mx-2 lg:w-auto">Pagar</button>
+                        <button wire:click="suscripcion_store" class="mt-6 rounded-lg bg-green-600 px-6 py-2.5 text-center text-sm font-medium capitalize leading-5 text-white hover:bg-green-500 focus:outline-none mx-2 lg:w-auto">Pagar</button>
                     
                     </div> 
                     
@@ -280,8 +475,28 @@
 
                     </div>
                 @endif
+            @endif
             </div>
         </div>
       </div>
   </div>
+  <script src="https://sdk.mercadopago.com/js/v2"></script>
+  
+  <script>
+  // Agrega credenciales de SDK
+  const mp = new MercadoPago("{{config('services.mercadopago.key')}}", {
+          locale: 'es-AR'
+  });
+  
+  // Inicializa el checkout
+  mp.checkout({
+      preference: {
+          id: '{{ $preference->id }}'
+      },
+      render: {
+              container: '.cho-container', // Indica el nombre de la clase donde se mostrará el botón de pago
+              label: 'Pagar', // Cambia el texto del botón de pago (opcional)
+      }
+  });
+  </script>
 </div>
