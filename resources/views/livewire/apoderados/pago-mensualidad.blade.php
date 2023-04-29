@@ -370,11 +370,9 @@
                                     No incluye matricula
                                 </li>
                                 <li class="text-gray-500 dark:text-gray-400">
-                                    Up to 10 collaborators
+                                    1 Mes
                                 </li>
-                                <li class="text-gray-500 dark:text-gray-400">
-                                    2Gb of storage
-                                </li>
+                              
                             </ul>
             
                             <button wire:click="set_plan(1)" class="inline-flex items-center justify-center px-4 py-2 font-semibold text-white uppercase transition-colors bg-blue-500 rounded-lg hover:bg-blue-700 focus:outline-none">
@@ -401,13 +399,7 @@
                                 No incluye matricula
                                 </li>
                                 <li class="text-gray-500 dark:text-gray-400">
-                                    Up to 20 collaborators
-                                </li>
-                                <li class="text-gray-500 dark:text-gray-400">
-                                    10Gb of storage
-                                </li>
-                                <li class="text-gray-500 dark:text-gray-400">
-                                    Real-time collaborations
+                                    3 Meses
                                 </li>
                             </ul>
             
@@ -435,16 +427,8 @@
                                 Incluye matricula
                                 </li>
                                 <li class="text-gray-500 dark:text-gray-400">
-                                    Unlimited collaborators
+                                    6 Meses
                                 </li>
-                                <li class="text-gray-500 dark:text-gray-400">
-                                    Unlimited storage
-                                </li>
-                                <li class="text-gray-500 dark:text-gray-400">
-                                    Real-time collaborations
-                                </li>
-                                <li class="text-gray-500 dark:text-gray-400">
-                                    24x7 Support
                                 </li>
                             </ul>
             
@@ -472,17 +456,9 @@
                                     Incluye matricula
                                     </li>
                                     <li class="text-gray-500 dark:text-gray-400">
-                                        Unlimited collaborators
+                                      1 año
                                     </li>
-                                    <li class="text-gray-500 dark:text-gray-400">
-                                        Unlimited storage
-                                    </li>
-                                    <li class="text-gray-500 dark:text-gray-400">
-                                        Real-time collaborations
-                                    </li>
-                                    <li class="text-gray-500 dark:text-gray-400">
-                                        24x7 Support
-                                    </li>
+                                    
                                 </ul>
         
                         <button wire:click="set_plan(4)" class="inline-flex items-center justify-center px-4 py-2 font-semibold text-white uppercase transition-colors bg-blue-500 rounded-lg hover:bg-blue-700 focus:outline-none">
