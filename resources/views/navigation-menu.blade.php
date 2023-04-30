@@ -22,7 +22,7 @@
                     @endcan
                     @can('Ver usuarios registrados')
                         <x-jet-nav-link href="{{ route('comprobantes.check') }}" :active="request()->routeIs('comprobantes.check')">
-                            {{ __('Comprobantes') }}
+                            {{ __('Contabilidad') }}
                         </x-jet-nav-link>
                     @endcan
                     
@@ -172,9 +172,14 @@
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Inicio') }}
             </x-jet-responsive-nav-link>
-            @can('Ver productores')
+            @can('Ver usuarios registradoss')
                 <x-jet-responsive-nav-link href="{{ route('productors.index') }}" :active="request()->routeIs('productors.index')">
-                    {{ __('Productores') }}
+                    {{ __('Apoderados') }}
+                </x-jet-responsive-nav-link>
+            @endcan
+            @can('Ver usuarios registradoss')
+                <x-jet-responsive-nav-link href="{{ route('comprobantes.check') }}" :active="request()->routeIs('comprobantes.check')">
+                    {{ __('Contabilidad') }}
                 </x-jet-responsive-nav-link>
             @endcan
             @can('Ver produccion_total')
