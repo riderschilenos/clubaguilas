@@ -10,12 +10,16 @@ use Intervention\Image\Facades\Image;
 use Livewire\WithFileUploads;
 
 class PagoMensualidad extends Component
-{   public $plan,$matricula,$proporcional,$siguiente,$valor_plan,$suscrip;
-    public $selectedTransfencia, $selectedMercadopago, $titulo, $file;
-
+{   public $plan,$matricula,$proporcional,$valor_plan,$suscrip;
+    public $selectedTransfencia, $selectedMercadopago, $titulo, $file,$now,$suscripcion_activa;
+    public $siguiente=True;
     use WithFileUploads;
 
     public function mount(){
+        $this->now = Carbon::now();
+        $this->suscripcion_activa=Suscripcion::where('user_id',auth()->user()->id)
+                                ->where('estado',1)
+                                ->first();
         $suscripcion=Suscripcion::where('user_id',auth()->user()->id)
                 ->where('estado',2)
                 ->first();
@@ -59,13 +63,20 @@ class PagoMensualidad extends Component
         $this->plan=$id;
         if($this->plan==1){
             $this->matricula=20000;
-            $this->proporcional=26000;
-            $this->siguiente=True;
+            
+            $this->proporcional=2000*((date('t', strtotime($this->now)))-date('d', strtotime($this->now)));
+            
+            if($this->siguiente==True){
+                $this->valor_plan=20000+$this->proporcional+60000;
+            }else{
+                $this->valor_plan=20000+$this->proporcional;
+            };
+
             $this->titulo="Plan Mensual";
         }
         if($this->plan==2){
             $this->matricula=20000;
-            $this->valor_plan=150000;
+            $this->valor_plan=170000;
             $this->titulo="Plan Trimestral";
         }
         if($this->plan==3){
@@ -80,6 +91,20 @@ class PagoMensualidad extends Component
         }
     }
 
+    public function set_siguiente(){
+        if($this->siguiente==True){
+            $this->siguiente==False;
+            $this->proporcional=2000*((date('t', strtotime($this->now)))-date('d', strtotime($this->now)));
+            $this->valor_plan=20000+$this->proporcional;
+            $this->plan=1;
+        }elseif($this->siguiente==False){
+            $this->siguiente==True;
+            $this->proporcional=2000*((date('t', strtotime($this->now)))-date('d', strtotime($this->now)));
+            $this->valor_plan=20000+$this->proporcional+60000;
+            $this->plan=1;
+        }
+    }
+
     public function suscripcion_store(){
         $rules = [
             'plan'=>'required'            
@@ -87,19 +112,19 @@ class PagoMensualidad extends Component
         $this->validate ($rules);
 
         if($this->plan==1){
-            $valor=106000;
+            $valor=$this->valor_plan;
             $date=date('Y-m-d', strtotime(Carbon::now()."+ 1 month"));
         }
         if($this->plan==2){
-            $valor=170000;
+            $valor=$this->valor_plan;
             $date=date('Y-m-d', strtotime(Carbon::now()."+ 3 month"));
         }
         if($this->plan==3){
-            $valor=290000;
+            $valor=$this->valor_plan;
             $date=date('Y-m-d', strtotime(Carbon::now()."+ 6 month"));
         }
         if($this->plan==4){
-            $valor=580000;
+            $valor=$this->valor_plan;
             $date=date('Y-m-d', strtotime(Carbon::now()."+ 1 year"));
         }
 
@@ -120,6 +145,7 @@ class PagoMensualidad extends Component
         $this->proporcional=NULL;
         $this->siguiente=False;
         $this->valor_plan=NULL;
+        $this->siguiente=True;
     }
 
     public function suscrip_destroy(Suscripcion $suscripcion){
@@ -129,6 +155,7 @@ class PagoMensualidad extends Component
         $this->proporcional=NULL;
         $this->siguiente=False;
         $this->valor_plan=NULL;
+        $this->siguiente=True;
     }
 
     public function updateselectedtransferencia(Suscripcion $suscripcion){

@@ -51,7 +51,8 @@
                                 <th class="text-center">Reset Password</th>
                                 <th>CELULAR</th>
                                 <th>EMAIL</th>
-                                <th class="text-left">Fecha Vencimiento</th>
+                                <th class="text-left">Fecha Vencimiento<br>Plan</th>
+                                <th class="text-left">Fecha Vencimiento<br>Matricula</th>
                                 
                                 <th>Estado</th>
                             </thead>
@@ -179,6 +180,18 @@
                                             }
                                         @endphp
                                         
+                                        <td class="">
+                                            <div class="flex items-center whitespace-nowrap">
+                                            
+                                                <p class="whitespace-nowrap text-base font-medium leading-none text-gray-700 mr-2">
+                                                    @if ($user->suscripcions->count())
+                                                        {{date('d M Y', strtotime($item->end_date))}}
+                                                        
+                                                        
+                                                    @endif
+                                                </p>
+                                            </div>
+                                        </td>
                                         <td class="">
                                             <div class="flex items-center whitespace-nowrap">
                                             
