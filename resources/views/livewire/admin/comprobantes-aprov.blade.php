@@ -43,13 +43,16 @@
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
                         Nro
                         </th>
+                       
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Método
+                            Usuario
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Cantidad                       
                         </th>
-                        
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Método
+                        </th>
                         
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Estado
@@ -80,6 +83,18 @@
                                     
                                     </td>
 
+                                    
+
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900 ml-3">{{$pago->user->name}}</div>
+                                    </td>
+
+                                
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900 ml-3">${{number_format($pago->valor)}}</div>
+                                        
+                                    </td>
+                                    
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         
                                         @if ($pago->metodo=="MERCADOPAGO")
@@ -96,14 +111,6 @@
                                             
                                         
                                     </td>
-
-                                
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="text-sm text-gray-900 ml-3">${{number_format($pago->valor)}}</div>
-                                        
-                                    </td>
-                                    
-                                    
 
                                     
 
