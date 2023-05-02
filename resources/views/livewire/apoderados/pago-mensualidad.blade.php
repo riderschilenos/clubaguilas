@@ -40,10 +40,19 @@
 
     <div class="mx-4 px-4 md:mx-20 bg-white">
       <div class="container px-2 py-8 mx-auto">
-        @if (IS_NULL($suscripcion))
+        @if (IS_NULL($suscripcion) && IS_NULL($suscripcion_activa) && IS_NULL($suscripcion_rechazada))
             <div class="mx-auto px-6 text-center">
                 <div class="mx-auto max-w-lg">
                 <p class="mt-6 text-gray-500">Todos los alumnos al momento de ingresar deberán hacer pago de <b>Matricula</b>, esta consta de una duración de un año.</p>
+                </div>
+            </div>
+        @elseif($suscripcion_rechazada)
+            <div class="flex justify-center">
+                <div class="flex justify-center bg-red-100 rounded-lg p-4 mb-6 mx-10 max-w-4xl text-sm text-red-700" role="alert">
+                    <svg class="w-5 h-5 inline mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+                    <div>
+                        <span class="font-medium">Hola, Tu pago a sido Rechazado!</span> Reenvíanos tu comprobante ya que no tenemos registro de tu pago.
+                    </div>
                 </div>
             </div>
         @endif
@@ -73,6 +82,160 @@
                         <div class="flex items-center justify-between text-slate-500">
                         
                         </div>
+                        </div>
+                    </div>
+                </div>
+            @elseif($suscripcion_rechazada)
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <div class="lg:pr-10">
+                        <div class="w-full mx-auto text-gray-800 font-light mb-6 border-b border-gray-200 pb-6">
+                            <div class="w-full flex items-center">
+                                <div class="overflow-hidden rounded-lg w-16 h-16 bg-gray-50 border border-gray-200">
+                                    <img src="https://img.freepik.com/foto-gratis/jugador-hockey-partido-sobre-cesped_23-2149668519.jpg" class="w-16 h-16 objet-cover" alt="">
+                                </div>
+                                <div class="flex-grow pl-3">
+                                    <h6 class="font-semibold uppercase text-gray-600">{{$titulo}}</h6>
+                                    <p class="text-gray-400">x 1</p>
+                                </div>
+                                <div>
+                                    
+                                    <span class="font-semibold text-gray-600 text-xl">${{number_format($suscripcion_rechazada->valor)}}</span><span class="font-semibold text-gray-600 text-sm"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-6 pb-6 border-b border-gray-200 hidden">
+                            <div class="-mx-2 flex items-end justify-end">
+                                <div class="flex-grow px-2 lg:max-w-xs">
+                                    <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">Discount code</label>
+                                    <div>
+                                        <input class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="XXXXXX" type="text"/>
+                                    </div>
+                                </div>
+                                <div class="px-2">
+                                    <button class="block w-full max-w-xs mx-auto border border-transparent bg-gray-400 hover:bg-gray-500 focus:bg-gray-500 text-white rounded-md px-5 py-2 font-semibold">APPLY</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-6 pb-6 border-b border-gray-200 text-gray-800">
+                            <div class="w-full flex items-center">
+                                <div class="flex-grow">
+                                    <span class="text-gray-600">Duración</span>
+                                </div>
+                                <div class="pl-3">
+                                    <span class="font-semibold">{{$titulo}}</span>
+                                </div>
+                            </div>
+                            <div class="w-full flex items-center">
+                                <div class="flex-grow">
+                                    <span class="text-gray-600">Próximo Vencimiento</span>
+                                </div>
+                                <div class="pl-3">
+                                    <span class="font-semibold">{{$suscripcion_rechazada->end_date}}</span>
+                                </div>
+                            </div>
+                            <div class="w-full flex mb-3 items-center">
+                                <div class="flex-grow">
+                                    <span class="text-gray-600">Subtotal</span>
+                                </div>
+                                <div class="pl-3">
+                                    <span class="font-semibold">${{number_format($suscripcion_rechazada->valor)}}</span>
+                                </div>
+                            </div>
+                        
+                        </div>
+                        <div class="mb-6 pb-6 border-b border-gray-200 md:border-none text-gray-800 text-xl">
+                            <div class="w-full flex items-center">
+                                <div class="flex-grow">
+                                    <span class="text-gray-600">Total</span>
+                                </div>
+                                <div class="pl-3">
+                                    <span class="font-semibold">${{number_format($suscripcion_rechazada->valor)}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white w-full h-54 rounded-xl py-6 flex items-center justify-around">
+                                
+                        <div class="text-center">
+                        
+                    
+                                            <div class="form-group">
+                                        
+                                                    <p class="px-12 pb-4">Selecciona el método de pago:</p>
+                                                    @if ($suscripcion_rechazada->metodo=='TRANSFERENCIA')
+                                                        <div class="form-group flex justify-center mx-4">
+                                                            <div class="flex form-check">
+                                                            <input type="radio" name="type" id="propio" value="" class="mr-2 mt-4" checked wire:click="updateselectedtransferencia({{$suscripcion_rechazada->id}})">
+                                                            <label for="propio" class="text-xl md:text-3xl font-bold text-gray-800">
+                                                                <img class="h-14 w-28 object-contain" src="{{asset('image/transferencia.png')}}" alt="">
+                                                            </label>
+                                                            </div>
+                                                            <div class="flex ml-4 form-check">
+                                                            <input type="radio" name="type" id="propio" value="" class="mr-2 mt-4" wire:click="updateselectedmercadopago({{$suscripcion_rechazada->id}})">
+                                                            <label for="propio" class="text-xl md:text-3xl font-bold text-gray-800" >
+                                                                    <img class="h-14 w-28 object-contain" src="{{asset('image/mercadopago.png')}}" alt="">
+                                                            </label>
+                                                            </div>
+                                                        </div>
+                                                    @else
+                                                        <div class="form-group flex justify-center mx-4">
+                                                            <div class="flex form-check">
+                                                            <input type="radio" name="type" id="propio" value="" class="mr-2 mt-4"  wire:click="updateselectedtransferencia({{$suscripcion_rechazada->id}})">
+                                                            <label for="propio" class="text-xl md:text-3xl font-bold text-gray-800">
+                                                                <img class="h-14 w-28 object-contain" src="{{asset('image/transferencia.png')}}" alt="">
+                                                            </label>
+                                                            </div>
+                                                            <div class="flex ml-4 form-check">
+                                                            <input type="radio" name="type" id="propio" value="" class="mr-2 mt-4" checked wire:click="updateselectedmercadopago({{$suscripcion_rechazada->id}})">
+                                                            <label for="propio" class="text-xl md:text-3xl font-bold text-gray-800" >
+                                                                    <img class="h-14 w-28 object-contain" src="{{asset('image/mercadopago.png')}}" alt="">
+                                                            </label>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    @endif
+                                                    
+                                                    
+                                            
+                            
+                                            </div>
+
+                                    
+                                            @if ($suscripcion_rechazada->metodo=='TRANSFERENCIA')
+                                                
+                                                        <div>
+                                                            <h1 class="text-xl font-bold text-center py-2 mt-4">Adjunte Comprobante por: ${{number_format($suscripcion_rechazada->valor)}}</h1>
+
+                                                            <p>Banco de Chile<br>
+                                                                Cta vista NRO 32620352<br>
+                                                                Rut:17.137.526-6<br>
+                                                                Roberto moya miranda<br>
+                                                                Clubhockeymachali@gmail.com</p>
+
+                                                            <hr class="w-full">
+
+                                                            <div class="text-white  text-md font-bold px-4" wire:loading wire:target="file">
+                                                                <img class="h-14" src="{{asset('image/cargando.gif')}}" alt="">
+                                                            </div>
+                                                        
+                                                                <input wire:model="file" type="file" class="form-input flex-1 bg-gray-200 mx-4">                                      
+                                                            
+                                                            
+
+                                                        <div class="flex justify-center">
+
+                                                            <button wire:click="suscrip_destroy({{$suscripcion_rechazada->id}})" class="mt-6 rounded-lg bg-red-600 px-6 py-2.5 text-center text-sm font-medium capitalize leading-5 text-white hover:bg-red-500 focus:outline-none mx-2 lg:w-auto">Cancelar</button>
+                                                            <button wire:click="enviar({{$suscripcion_rechazada->id}})" class="mt-6 rounded-lg bg-gray-600 px-6 py-2.5 text-center text-sm font-medium capitalize leading-5 text-white hover:bg-gray-500 focus:outline-none mx-2 lg:w-auto">Enviar</button>
+                                                        
+                                                        </div> 
+                                            @else
+                                            
+                                                    <div class="cho-container flex justify-center mt-2 mb-4">
+                                                        <!-- Esto es <a href="" class="btn btn-primary">Pagar</a> un comentario -->
+                                                    </div>
+                                            @endif
+                                    
+                        
                         </div>
                     </div>
                 </div>
@@ -141,6 +304,14 @@
                                         </div>
                                         <div class="pl-3">
                                             <span class="font-semibold">{{$titulo}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="w-full flex items-center">
+                                        <div class="flex-grow">
+                                            <span class="text-gray-600">Próximo Vencimiento</span>
+                                        </div>
+                                        <div class="pl-3">
+                                            <span class="font-semibold">{{$suscripcion->end_date}}</span>
                                         </div>
                                     </div>
                                     <div class="w-full flex mb-3 items-center">

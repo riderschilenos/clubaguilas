@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Productor;
 
+use App\Models\Suscripcion;
 use App\Models\Sync;
 use App\Models\Telefono;
 use App\Models\User;
@@ -12,7 +13,7 @@ use Livewire\WithPagination;
 class ProductorSearch extends Component
 {   use WithPagination;
 
-    public $search, $cellid, $phone, $user, $ctd=25;
+    public $search, $cellid,$userid, $phone, $valor, $date, $user, $ctd=25;
 
     public function render()
     {   $users=User::where('rut','LIKE','%'. $this->search .'%')
@@ -35,13 +36,25 @@ class ProductorSearch extends Component
         $this->resetPage();
     }
 
-    public function set_iduser($id){
+    public function set_idcell($id){
         $this->cellid=$id;
         $this->user=User::find($this->cellid);
+        $this->userid=NULL;
+    }
+
+    public function set_iduser($id){
+        $this->userid=$id;
+        $this->user=User::find($this->userid);
+        $this->cellid=NULL;
     }
 
     public function cellid_clean(){
         $this->cellid=NULL;
+        $this->user=NULL;
+    }
+
+    public function userid_clean(){
+        $this->userid=NULL;
         $this->user=NULL;
     }
 
@@ -70,6 +83,27 @@ class ProductorSearch extends Component
             'updated_at'=> Carbon::now()
         ])->save();
         $this->user=User::find($this->cellid);
+    }
+
+    public function suscripcion_destroy(Suscripcion $suscripcion){
+        $suscripcion->delete();
+        $this->user->ForceFill([
+            'updated_at'=> Carbon::now()
+        ])->save();
+        $this->user=User::find($this->userid);
+    }
+
+    public function suscripcion_store(){
+       
+        Suscripcion::create([
+            'user_id'=>$this->user->id,
+            'valor'=> $this->valor,
+            'estado'=> 1,
+            'end_date'=>$this->date 
+        ]);
+
+        $this->reset(['valor','date']);
+       
     }
 
     

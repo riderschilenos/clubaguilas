@@ -11,7 +11,7 @@ use Livewire\WithFileUploads;
 
 class PagoMensualidad extends Component
 {   public $plan,$matricula,$proporcional,$valor_plan,$suscrip;
-    public $selectedTransfencia, $selectedMercadopago, $titulo, $file,$now,$suscripcion_activa;
+    public $selectedTransfencia, $selectedMercadopago,$titulo, $file,$now,$suscripcion_activa,$suscripcion_rechazada;
     public $siguiente=True;
     use WithFileUploads;
 
@@ -19,6 +19,9 @@ class PagoMensualidad extends Component
         $this->now = Carbon::now();
         $this->suscripcion_activa=Suscripcion::where('user_id',auth()->user()->id)
                                 ->where('estado',1)
+                                ->first();
+        $this->suscripcion_rechazada=Suscripcion::where('user_id',auth()->user()->id)
+                                ->where('estado',4)
                                 ->first();
         $suscripcion=Suscripcion::where('user_id',auth()->user()->id)
                 ->where('estado',2)
@@ -113,7 +116,13 @@ class PagoMensualidad extends Component
 
         if($this->plan==1){
             $valor=$this->valor_plan;
-            $date=date('Y-m-d', strtotime(Carbon::now()."+ 1 month"));
+            $date=date('Y-m-d', strtotime(Carbon::now()."+ ".((date('t', strtotime($this->now)))-date('d', strtotime($this->now)))." days"));
+            
+            if($this->siguiente==TRUE){
+                $date=date('Y-m-d', strtotime($date."+ 1 month"));
+            }
+                
+
         }
         if($this->plan==2){
             $valor=$this->valor_plan;
@@ -132,12 +141,14 @@ class PagoMensualidad extends Component
         $this->suscrip = Suscripcion::create([
             'user_id'=>auth()->user()->id,
             'valor'=> $valor,
-            'end_date'=>$date        
+            'end_date'=>$date 
         ]);
 
         $this->reset(['plan','matricula','proporcional','siguiente','valor_plan','suscrip']);
        
     }
+
+    
 
     public function plan_clean(){
         $this->plan=NULL;
@@ -197,6 +208,7 @@ class PagoMensualidad extends Component
         
 
         $this->reset(['file']);
+        return redirect()->route('dashboard');
         
     }
 

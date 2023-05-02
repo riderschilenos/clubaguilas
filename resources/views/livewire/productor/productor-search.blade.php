@@ -134,7 +134,7 @@
                                                 </button>
                                             @else
                                                 @if ($user->telefonos->count())
-                                                    <button wire:click="set_iduser({{$user->id}})" class="mx-4 focus:ring-2 focus:ring-offset-2 focus:ring-green-500 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-green-500 hover:bg-green-500 focus:outline-none rounded">
+                                                    <button wire:click="set_idcell({{$user->id}})" class="mx-4 focus:ring-2 focus:ring-offset-2 focus:ring-green-500 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-green-500 hover:bg-green-500 focus:outline-none rounded">
 
                                                         <h1 style="font-size: 1rem;white-space: nowrap;" class="text-center text-white font-bold inline w-full" >
                                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
@@ -144,7 +144,7 @@
                                                         </h1>
                                                     </button>
                                                 @else
-                                                    <button wire:click="set_iduser({{$user->id}})" class="mx-4 focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-gray-500 hover:bg-gray-500 focus:outline-none rounded">
+                                                    <button wire:click="set_idcell({{$user->id}})" class="mx-4 focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-gray-500 hover:bg-gray-500 focus:outline-none rounded">
 
                                                         <h1 style="font-size: 1rem;white-space: nowrap;" class="text-center text-white font-bold inline w-full" >
                                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
@@ -207,12 +207,22 @@
                                     
                                         <td class="pl-5">
                                            
-
+                                            @if ($user->id==$userid)
                                                 @if ($estado=='ACTIVO')
-                                                    <button class="py-3 px-3 text-sm focus:outline-none leading-none text-green-700 bg-green-100 rounded">{{$estado}}</button>
+                                                    <button wire:click="userid_clean" class="py-3 px-3 text-sm focus:outline-none leading-none text-green-700 bg-green-100 rounded">{{$estado}}</button>
                                                 @else
-                                                    <button class="py-3 px-3 text-sm focus:outline-none leading-none text-red-700 bg-red-100 rounded">{{$estado}}</button>
+                                                    <button wire:click="userid_clean" class="py-3 px-3 text-sm focus:outline-none leading-none text-red-700 bg-red-100 rounded">{{$estado}}</button>
                                                 @endif
+                                            @else
+                                                @if ($estado=='ACTIVO')
+                                                    <button wire:click="set_iduser({{$user->id}})" class="py-3 px-3 text-sm focus:outline-none leading-none text-green-700 bg-green-100 rounded">{{$estado}}</button>
+                                                @else
+                                                    <button wire:click="set_iduser({{$user->id}})" class="py-3 px-3 text-sm focus:outline-none leading-none text-red-700 bg-red-100 rounded">{{$estado}}</button>
+                                                @endif
+
+                                            @endif
+
+                                               
                                            
                                              
                                                     
@@ -252,31 +262,225 @@
 
                                     <tr tabindex="0" class="focus:outline-none h-16 border border-gray-100 rounded">
                                       
-                                        <td class="pl-5">
-                                            <p class="text-base font-medium leading-none text-gray-700 mr-2">
+                                            <td class="pl-5">
+                                                <p class="text-base font-medium leading-none text-gray-700 mr-2">
 
+                                            
+                                                
+                                            </p>
+                                            
                                         
                                             
-                                        </p>
-                                        
-                                     
-                                        
-                                        <td class="pl-5">
-                                        
+                                            <td class="pl-5">
+                                            
 
+                                            
                                         
-                                    
+                                            
                                         
+                                            </td>
+                                        
+                                            <td class="pl-5 text-center items-center content-center">
+
+                                                @if ($user->telefonos)
+                                                    @foreach ($user->telefonos as $telefono)
+                                                    <div class="flex text-center justify-center items-center content-center">
+                                                        <b>{{$telefono->numero}}  </b>
+                                                        <p wire:click="phone_destroy({{$telefono}})" class="text-red-500 cursor-pointer ml-1"> (X)</p>
+
+                                                    </div>
+                                                        <br>
+                                                        
+                                                    @endforeach
+                                                    
+                                                @endif
+
+                                            
+                                            
+                                            
+                                            </td>
+                                            <td class="pl-5">
+                                                <div class="flex items-center">
+                                                
+                                                    
+                                                    <div class="flex items-center">
+                                                        <label class="w-32 mx-2"><strong>Agregar:</strong></label>
+                                                        <input wire:model="phone" class="form-input w-full border-2 border-gray-300 bg-white h-10 rounded-lg text-sm focus:outline-none">
+                                                    </div>
                                     
+                                                    @error('name')
+                                                        <span class="text-sm text-red-500">{{$message}}</span>
+                                                    @enderror
+                                                
+                                                
+                                                    <button wire:click="storephone" class="mx-4 focus:ring-2 focus:ring-offset-2 focus:ring-green-500 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-green-500 hover:bg-green-500 focus:outline-none rounded">
+
+                                                        <h1 style="font-size: 1rem;white-space: nowrap;" class="text-center text-white font-bold inline w-full" >
+                                                            +
+                                                            
+                                                        </h1>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                            <td class="pl-5">
+                                                <div class="flex items-center">
+                                                
+                                                    <p class="text-base font-medium leading-none text-gray-700 mr-2">
+
+                                                        
+                                                    </p>
+                                                </div>
+                                            </td>
                                         </td>
+                                        <td class="pl-5 whitespace-nowrap">
+                                            <p class="whitespace-nowrap  text-base flex font-medium leading-none text-gray-700 mr-2">
+
+                                                
+
+                                                
+                                            </p>
+                                            
+                                        </td>
+                                        
+                                            <td class="pl-5">
+                                        
+                                            </td>
+                                            <td class="pl-4">
+                                            
+                                            </td>
+                                            <td>
+                                           
+                                        </td>
+                                    </tr>
+
+                                @endif
+                                @if ($userid==$user->id)
+
+                                    <tr tabindex="0" class="focus:outline-none h-16 border border-gray-100 rounded">
                                     
+                                            <td class="pl-5">
+                                                <p class="text-base font-medium leading-none text-gray-700 mr-2">
+
+                                            
+                                                
+                                            </p>
+                                            
+                                        
+                                            
+                                            <td class="pl-5">
+                                            
+
+                                            
+                                        
+                                            
+                                        
+                                            </td>
+                                        
+                                            <td class="pl-5 text-center items-center content-center">
+
+                                                @if ($user->suscripcions)
+                                                    @foreach ($user->suscripcions as $suscripcion)
+                                                    <div class="flex text-center justify-center items-center content-center">
+                                                       
+                                                        @switch($suscripcion->estado)
+                                                            @case(1)
+                                                            <p class="whitespace-nowrap">ACTIVA / {{$suscripcion->end_date}}</p>
+                                                                
+                                                                @break
+                                                            @case(2)
+                                                            <p class="whitespace-nowrap">
+                                                                INACTIVA / {{$suscripcion->end_date}}  </p>
+                                                                @break
+                                                            @case(3)
+                                                               <p class="whitespace-nowrap">PENDIENTE / {{$suscripcion->end_date}} </p> 
+                                                                @break
+                                                            @case(4)
+                                                               <p class="whitespace-nowrap"> RECHAZADA / {{$suscripcion->end_date}} </p>
+                                                                @break
+                                                            @case(5)
+                                                               <p class="whitespace-nowrap"> BLOQUEADA / {{$suscripcion->end_date}} </p>
+                                                                @break
+                                                            
+                                                            @default
+                                                                
+                                                        @endswitch
+                                                      
+                                                        <p wire:click="suscripcion_destroy({{$suscripcion}})" class="text-red-500 cursor-pointer ml-1"> (X)</p>
+
+                                                    </div>
+                                                        <br>
+                                                        
+                                                    @endforeach
+                                                    
+                                                @endif
+
+                                            
+                                            
+                                            
+                                            </td>
+                                            <td class="pl-5">
+                                                <div class="flex items-center">
+                                                
+                                                    
+                                                    <div class="flex items-center">
+                                                        <label class="w-32 mx-2"><strong>Agregar Matricula:</strong></label>
+                                                        <input wire:model="phone" class="form-input w-full border-2 border-gray-300 bg-white h-10 rounded-lg text-sm focus:outline-none">
+                                                    </div>
+                                    
+                                                    @error('name')
+                                                        <span class="text-sm text-red-500">{{$message}}</span>
+                                                    @enderror
+                                                
+                                                
+                                                    <button wire:click="storephone" class="mx-4 focus:ring-2 focus:ring-offset-2 focus:ring-green-500 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-green-500 hover:bg-green-500 focus:outline-none rounded">
+
+                                                        <h1 style="font-size: 1rem;white-space: nowrap;" class="text-center text-white font-bold inline w-full" >
+                                                            +
+                                                            
+                                                        </h1>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                            <td class="pl-5">
+                                                <div class="flex items-center">
+                                                
+                                                    <p class="text-base font-medium leading-none text-gray-700 mr-2">
+
+                                                        
+                                                    </p>
+                                                </div>
+                                            </td>
+                                        </td>
                                         <td class="pl-5 text-center items-center content-center">
 
-                                            @if ($user->telefonos)
-                                                @foreach ($user->telefonos as $telefono)
+                                            @if ($user->suscripcions)
+                                                @foreach ($user->suscripcions as $suscripcion)
                                                 <div class="flex text-center justify-center items-center content-center">
-                                                    <b>{{$telefono->numero}}  </b>
-                                                    <p wire:click="phone_destroy({{$telefono}})" class="text-red-500 cursor-pointer ml-1"> (X)</p>
+                                                   
+                                                    @switch($suscripcion->estado)
+                                                        @case(1)
+                                                        <p class="whitespace-nowrap">ACTIVA / {{$suscripcion->end_date}}</p>
+                                                            
+                                                            @break
+                                                        @case(2)
+                                                        <p class="whitespace-nowrap">
+                                                            INACTIVA / {{$suscripcion->end_date}}  </p>
+                                                            @break
+                                                        @case(3)
+                                                           <p class="whitespace-nowrap">PENDIENTE / {{$suscripcion->end_date}} </p> 
+                                                            @break
+                                                        @case(4)
+                                                           <p class="whitespace-nowrap"> RECHAZADA / {{$suscripcion->end_date}} </p>
+                                                            @break
+                                                        @case(5)
+                                                           <p class="whitespace-nowrap"> BLOQUEADA / {{$suscripcion->end_date}} </p>
+                                                            @break
+                                                        
+                                                        @default
+                                                            
+                                                    @endswitch
+                                                  
+                                                    <p wire:click="suscripcion_destroy({{$suscripcion}})" class="text-red-500 cursor-pointer ml-1"> (X)</p>
 
                                                 </div>
                                                     <br>
@@ -285,25 +489,26 @@
                                                 
                                             @endif
 
-                                           
-                                           
-                                           
+                                        
+                                        
+                                        
                                         </td>
                                         <td class="pl-5">
                                             <div class="flex items-center">
                                             
                                                 
                                                 <div class="flex items-center">
-                                                    <label class="w-32 mx-2"><strong>Agregar:</strong></label>
-                                                    <input wire:model="phone" class="form-input w-full border-2 border-gray-300 bg-white h-10 rounded-lg text-sm focus:outline-none">
+                                                    <label class="w-32 mx-2"><strong>Agregar Suscripción:</strong></label>
+                                                    <input type="number" wire:model="valor" class="form-input w-full border-2 border-gray-300 bg-white h-10 rounded-lg text-sm focus:outline-none">
+                                                    <input type="date" wire:model="date" class="form-input w-full border-2 border-gray-300 bg-white h-10 rounded-lg text-sm focus:outline-none">
                                                 </div>
                                 
                                                 @error('name')
                                                     <span class="text-sm text-red-500">{{$message}}</span>
                                                 @enderror
-                                               
-                                               
-                                                <button wire:click="storephone" class="mx-4 focus:ring-2 focus:ring-offset-2 focus:ring-green-500 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-green-500 hover:bg-green-500 focus:outline-none rounded">
+                                            
+                                            
+                                                <button wire:click="suscripcion_store" class="mx-4 focus:ring-2 focus:ring-offset-2 focus:ring-green-500 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-green-500 hover:bg-green-500 focus:outline-none rounded">
 
                                                     <h1 style="font-size: 1rem;white-space: nowrap;" class="text-center text-white font-bold inline w-full" >
                                                         +
@@ -312,34 +517,13 @@
                                                 </button>
                                             </div>
                                         </td>
-                                        <td class="pl-5">
-                                            <div class="flex items-center">
-                                            
-                                                <p class="text-base font-medium leading-none text-gray-700 mr-2">
-
-                                                    
-                                                </p>
-                                            </div>
-                                        </td>
-                                    </td>
-                                    <td class="pl-5 whitespace-nowrap">
-                                        <p class="whitespace-nowrap  text-base flex font-medium leading-none text-gray-700 mr-2">
-
-                                            
-
-                                            
-                                        </p>
                                         
-                                    </td>
-                                    
-                                        <td class="pl-5">
-                                       
-                                        </td>
-                                        <td class="pl-4">
-                                         
-                                        </td>
-                                        <td>
                                            
+                                            <td class="pl-4">
+                                            
+                                            </td>
+                                            <td>
+                                        
                                         </td>
                                     </tr>
 
