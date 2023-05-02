@@ -384,21 +384,19 @@
                                                        
                                                         @switch($suscripcion->estado)
                                                             @case(1)
-                                                            <p class="whitespace-nowrap">ACTIVA / {{$suscripcion->end_date}}</p>
-                                                                
+                                                            <p class="whitespace-nowrap">ACTIVA / {{$suscripcion->end_date}} / ${{number_format($suscripcion->valor)}}</p>
                                                                 @break
                                                             @case(2)
-                                                            <p class="whitespace-nowrap">
-                                                                INACTIVA / {{$suscripcion->end_date}}  </p>
+                                                            <p class="whitespace-nowrap">INACTIVA / {{$suscripcion->end_date}} / ${{number_format($suscripcion->valor)}} </p>
                                                                 @break
                                                             @case(3)
-                                                               <p class="whitespace-nowrap">PENDIENTE / {{$suscripcion->end_date}} </p> 
+                                                               <p class="whitespace-nowrap">PENDIENTE / {{$suscripcion->end_date}} / ${{number_format($suscripcion->valor)}}</p> 
                                                                 @break
                                                             @case(4)
-                                                               <p class="whitespace-nowrap"> RECHAZADA / {{$suscripcion->end_date}} </p>
+                                                               <p class="whitespace-nowrap"> RECHAZADA / {{$suscripcion->end_date}} / ${{number_format($suscripcion->valor)}}</p>
                                                                 @break
                                                             @case(5)
-                                                               <p class="whitespace-nowrap"> BLOQUEADA / {{$suscripcion->end_date}} </p>
+                                                               <p class="whitespace-nowrap"> BLOQUEADA / {{$suscripcion->end_date}} / ${{number_format($suscripcion->valor)}}</p>
                                                                 @break
                                                             
                                                             @default
@@ -459,21 +457,20 @@
                                                    
                                                     @switch($suscripcion->estado)
                                                         @case(1)
-                                                        <p class="whitespace-nowrap">ACTIVA / {{$suscripcion->end_date}}</p>
+                                                        <p class="whitespace-nowrap">ACTIVA / {{$suscripcion->end_date}} / ${{number_format($suscripcion->valor)}}</p>
                                                             
                                                             @break
                                                         @case(2)
-                                                        <p class="whitespace-nowrap">
-                                                            INACTIVA / {{$suscripcion->end_date}}  </p>
+                                                        <p class="whitespace-nowrap">INACTIVA / {{$suscripcion->end_date}} / ${{number_format($suscripcion->valor)}}  </p>
                                                             @break
                                                         @case(3)
-                                                           <p class="whitespace-nowrap">PENDIENTE / {{$suscripcion->end_date}} </p> 
+                                                           <p class="whitespace-nowrap">PENDIENTE / {{$suscripcion->end_date}} / ${{number_format($suscripcion->valor)}} </p> 
                                                             @break
                                                         @case(4)
-                                                           <p class="whitespace-nowrap"> RECHAZADA / {{$suscripcion->end_date}} </p>
+                                                           <p class="whitespace-nowrap"> RECHAZADA / {{$suscripcion->end_date}} / ${{number_format($suscripcion->valor)}} </p>
                                                             @break
                                                         @case(5)
-                                                           <p class="whitespace-nowrap"> BLOQUEADA / {{$suscripcion->end_date}} </p>
+                                                           <p class="whitespace-nowrap"> BLOQUEADA / {{$suscripcion->end_date}} / ${{number_format($suscripcion->valor)}} </p>
                                                             @break
                                                         
                                                         @default
