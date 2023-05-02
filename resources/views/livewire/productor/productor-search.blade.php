@@ -367,14 +367,7 @@
                                             
                                         
                                             
-                                            <td class="pl-5">
                                             
-
-                                            
-                                        
-                                            
-                                        
-                                            </td>
                                         
                                             <td class="pl-5 text-center items-center content-center">
 
@@ -448,7 +441,7 @@
                                                     </p>
                                                 </div>
                                             </td>
-                                        </td>
+                                        
                                         <td class="pl-5 text-center items-center content-center">
 
                                             @if ($user->suscripcions)
