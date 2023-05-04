@@ -1,5 +1,4 @@
 <div>
-    {{$fecha.'/'.$date.'/'.$siguiente}}
     @php
         // SDK de Mercado Pago
          require base_path('/vendor/autoload.php');

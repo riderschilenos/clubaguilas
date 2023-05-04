@@ -17,7 +17,7 @@
          <div class="flex items-center">
             <div class="flex-shrink-0">
                <span class="text-2xl sm:text-3xl leading-none font-bold text-gray-900"><h1 class="block text-2xl font-bold">Hola<br> {{Auth()->user()->name}}</h1></span>
-               <h3 class="text-base font-normal text-gray-500">Atte. Administración Club Águilas</h3>
+               <h3 class="text-base font-normal text-gray-500">Bienvenido Socios Club Águilas Chile</h3>
             </div>
             
          </div>
