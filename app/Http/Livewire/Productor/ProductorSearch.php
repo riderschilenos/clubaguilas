@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Productor;
 
+use App\Models\Matricula;
 use App\Models\Suscripcion;
 use App\Models\Sync;
 use App\Models\Telefono;
@@ -13,7 +14,7 @@ use Livewire\WithPagination;
 class ProductorSearch extends Component
 {   use WithPagination;
 
-    public $search, $cellid,$userid, $phone, $valor, $date, $user, $ctd=25;
+    public $search, $cellid,$userid, $phone, $valor, $date, $valor2, $date2, $user, $ctd=25;
 
     public function render()
     {   $users=User::where('rut','LIKE','%'. $this->search .'%')
@@ -93,6 +94,14 @@ class ProductorSearch extends Component
         $this->user=User::find($this->userid);
     }
 
+    public function matricula_destroy(Matricula $matricula){
+        $matricula->delete();
+        $this->user->ForceFill([
+            'updated_at'=> Carbon::now()
+        ])->save();
+        $this->user=User::find($this->userid);
+    }
+
     public function suscripcion_store(){
        
         Suscripcion::create([
@@ -103,6 +112,19 @@ class ProductorSearch extends Component
         ]);
 
         $this->reset(['valor','date']);
+       
+    }
+
+    public function matricula_store(){
+       
+        Matricula::create([
+            'user_id'=>$this->user->id,
+            'valor'=> $this->valor2,
+            'estado'=> 1,
+            'end_date'=>$this->date2 
+        ]);
+
+        $this->reset(['valor2','date2']);
        
     }
 

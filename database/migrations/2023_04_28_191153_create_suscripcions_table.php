@@ -23,6 +23,8 @@ return new class extends Migration
 
                 $table->integer('valor');
 
+                $table->integer('matricula')->nullable();
+
                 $table->date('end_date');
 
                 $table->string('metodo')->default('TRANSFERENCIA');

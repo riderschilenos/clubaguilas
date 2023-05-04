@@ -192,12 +192,23 @@
                                                 </p>
                                             </div>
                                         </td>
+                                        @php
+                                            $estado='INACTIVO';
+                                            if($user->matriculas){
+                                                foreach ($user->matriculas as $matricula) {
+                                                    if ($matricula->estado==1) {
+                                                        $estado='ACTIVO';
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                        @endphp
                                         <td class="">
                                             <div class="flex items-center whitespace-nowrap">
                                             
                                                 <p class="whitespace-nowrap text-base font-medium leading-none text-gray-700 mr-2">
-                                                    @if ($user->suscripcions->count())
-                                                        {{date('d M Y', strtotime($item->end_date))}}
+                                                    @if ($user->matriculas->count())
+                                                        {{date('d M Y', strtotime($matricula->end_date))}}
                                                         
                                                         
                                                     @endif
@@ -371,32 +382,32 @@
                                         
                                             <td class="pl-5 text-center items-center content-center">
 
-                                                @if ($user->suscripcions)
-                                                    @foreach ($user->suscripcions as $suscripcion)
+                                                @if ($user->matriculas)
+                                                    @foreach ($user->matriculas as $suscripcion)
                                                     <div class="flex text-center justify-center items-center content-center">
                                                        
                                                         @switch($suscripcion->estado)
                                                             @case(1)
-                                                            <p class="whitespace-nowrap">ACTIVA / {{$suscripcion->end_date}} / ${{number_format($suscripcion->valor)}}</p>
+                                                            <p class="whitespace-nowrap">ACTIVA - {{date('d/m/Y', strtotime($suscripcion->end_date))}} - ${{number_format($suscripcion->valor)}}</p>
                                                                 @break
                                                             @case(2)
-                                                            <p class="whitespace-nowrap">INACTIVA / {{$suscripcion->end_date}} / ${{number_format($suscripcion->valor)}} </p>
+                                                            <p class="whitespace-nowrap">INACTIVA - {{date('d/m/Y', strtotime($suscripcion->end_date))}} - ${{number_format($suscripcion->valor)}} </p>
                                                                 @break
                                                             @case(3)
-                                                               <p class="whitespace-nowrap">PENDIENTE / {{$suscripcion->end_date}} / ${{number_format($suscripcion->valor)}}</p> 
+                                                               <p class="whitespace-nowrap">PENDIENTE - {{date('d/m/Y', strtotime($suscripcion->end_date))}} - ${{number_format($suscripcion->valor)}}</p> 
                                                                 @break
                                                             @case(4)
-                                                               <p class="whitespace-nowrap"> RECHAZADA / {{$suscripcion->end_date}} / ${{number_format($suscripcion->valor)}}</p>
+                                                               <p class="whitespace-nowrap"> RECHAZADA - {{date('d/m/Y', strtotime($suscripcion->end_date))}} - ${{number_format($suscripcion->valor)}}</p>
                                                                 @break
                                                             @case(5)
-                                                               <p class="whitespace-nowrap"> BLOQUEADA / {{$suscripcion->end_date}} / ${{number_format($suscripcion->valor)}}</p>
+                                                               <p class="whitespace-nowrap"> BLOQUEADA - {{date('d/m/Y', strtotime($suscripcion->end_date))}} - ${{number_format($suscripcion->valor)}}</p>
                                                                 @break
                                                             
                                                             @default
                                                                 
                                                         @endswitch
                                                       
-                                                        <p wire:click="suscripcion_destroy({{$suscripcion}})" class="text-red-500 cursor-pointer ml-1"> (X)</p>
+                                                        <p wire:click="matricula_destroy({{$suscripcion}})" class="text-red-500 cursor-pointer ml-1"> (X)</p>
 
                                                     </div>
                                                         <br>
@@ -415,7 +426,8 @@
                                                     
                                                     <div class="flex items-center">
                                                         <label class="w-32 mx-2"><strong>Agregar Matricula:</strong></label>
-                                                        <input wire:model="phone" class="form-input w-full border-2 border-gray-300 bg-white h-10 rounded-lg text-sm focus:outline-none">
+                                                        <input type="number" wire:model="valor2" class="form-input w-full border-2 border-gray-300 bg-white h-10 rounded-lg text-sm focus:outline-none">
+                                                        <input type="date" wire:model="date2" class="form-input w-full border-2 border-gray-300 bg-white h-10 rounded-lg text-sm focus:outline-none">
                                                     </div>
                                     
                                                     @error('name')
@@ -423,7 +435,7 @@
                                                     @enderror
                                                 
                                                 
-                                                    <button wire:click="storephone" class="mx-4 focus:ring-2 focus:ring-offset-2 focus:ring-green-500 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-green-500 hover:bg-green-500 focus:outline-none rounded">
+                                                    <button wire:click="matricula_store" class="mx-4 focus:ring-2 focus:ring-offset-2 focus:ring-green-500 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-green-500 hover:bg-green-500 focus:outline-none rounded">
 
                                                         <h1 style="font-size: 1rem;white-space: nowrap;" class="text-center text-white font-bold inline w-full" >
                                                             +
@@ -449,26 +461,25 @@
                                                 <div class="flex text-center justify-center items-center content-center">
                                                    
                                                     @switch($suscripcion->estado)
-                                                        @case(1)
-                                                        <p class="whitespace-nowrap">ACTIVA / {{$suscripcion->end_date}} / ${{number_format($suscripcion->valor)}}</p>
+                                                            @case(1)
+                                                            <p class="whitespace-nowrap">ACTIVA - {{date('d/m/Y', strtotime($suscripcion->end_date))}} - ${{number_format($suscripcion->valor)}}</p>
+                                                                @break
+                                                            @case(2)
+                                                            <p class="whitespace-nowrap">INACTIVA - {{date('d/m/Y', strtotime($suscripcion->end_date))}} - ${{number_format($suscripcion->valor)}} </p>
+                                                                @break
+                                                            @case(3)
+                                                               <p class="whitespace-nowrap">PENDIENTE - {{date('d/m/Y', strtotime($suscripcion->end_date))}} - ${{number_format($suscripcion->valor)}}</p> 
+                                                                @break
+                                                            @case(4)
+                                                               <p class="whitespace-nowrap"> RECHAZADA - {{date('d/m/Y', strtotime($suscripcion->end_date))}} - ${{number_format($suscripcion->valor)}}</p>
+                                                                @break
+                                                            @case(5)
+                                                               <p class="whitespace-nowrap"> BLOQUEADA - {{date('d/m/Y', strtotime($suscripcion->end_date))}} - ${{number_format($suscripcion->valor)}}</p>
+                                                                @break
                                                             
-                                                            @break
-                                                        @case(2)
-                                                        <p class="whitespace-nowrap">INACTIVA / {{$suscripcion->end_date}} / ${{number_format($suscripcion->valor)}}  </p>
-                                                            @break
-                                                        @case(3)
-                                                           <p class="whitespace-nowrap">PENDIENTE / {{$suscripcion->end_date}} / ${{number_format($suscripcion->valor)}} </p> 
-                                                            @break
-                                                        @case(4)
-                                                           <p class="whitespace-nowrap"> RECHAZADA / {{$suscripcion->end_date}} / ${{number_format($suscripcion->valor)}} </p>
-                                                            @break
-                                                        @case(5)
-                                                           <p class="whitespace-nowrap"> BLOQUEADA / {{$suscripcion->end_date}} / ${{number_format($suscripcion->valor)}} </p>
-                                                            @break
-                                                        
-                                                        @default
-                                                            
-                                                    @endswitch
+                                                            @default
+                                                                
+                                                        @endswitch
                                                   
                                                     <p wire:click="suscripcion_destroy({{$suscripcion}})" class="text-red-500 cursor-pointer ml-1"> (X)</p>
 
