@@ -187,7 +187,8 @@
                                                     @if ($user->suscripcions->count())
                                                         {{date('d M Y', strtotime($item->end_date))}}
                                                         
-                                                        
+                                                        @else
+                                                    <button wire:click="userid_clean" class="py-3 px-3 text-sm focus:outline-none leading-none text-red-700 bg-red-100 rounded">-</button>
                                                     @endif
                                                 </p>
                                             </div>
@@ -211,7 +212,7 @@
                                                         {{date('d M Y', strtotime($matricula->end_date))}}
                                                         
                                                     @else
-                                                    
+                                                    <button wire:click="userid_clean" class="py-3 px-3 text-sm focus:outline-none leading-none text-red-700 bg-red-100 rounded">-</button>
                                                     @endif
                                                 </p>
                                             </div>
