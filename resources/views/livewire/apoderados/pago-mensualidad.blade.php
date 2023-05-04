@@ -102,7 +102,6 @@
                                 
                                     <div class="mt-4 mb-6">
                                     <div class="mb-3 text-xl font-bold">Hola, estamos revisando el comprobante de pago, nos contactaremos a la inmediatez.</div>
-                                    <div class="text-sm text-neutral-600">Aliquam a tristique sapien, nec bibendum urna. Maecenas convallis dignissim turpis, non suscipit mauris interdum at. Morbi sed gravida nisl, a pharetra nulla. Etiam tincidunt turpis leo, ut mollis ipsum consectetur quis. Etiam faucibus est risus, ac condimentum mauris consequat nec. Curabitur eget feugiat massa</div>
                                     </div>
                                 
                                     <div>

@@ -8,6 +8,7 @@ use App\Models\Sync;
 use App\Models\Telefono;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -87,6 +88,10 @@ class ProductorSearch extends Component
     }
 
     public function suscripcion_destroy(Suscripcion $suscripcion){
+        if($suscripcion->comprobante){
+            Storage::delete($suscripcion->comprobante);
+        }
+        
         $suscripcion->delete();
         $this->user->ForceFill([
             'updated_at'=> Carbon::now()
